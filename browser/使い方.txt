@@ -1,0 +1,4 @@
+漸化式ラボ.html をブラウザーで開いてください。サーバー・インストール・通信は不要です。
+問題はRust/WebAssemblyで生成し、初期条件と1〜20の漸化式を厳密計算で検査します。
+ブラウザーではLeanによる全項証明を実行しません。
+ソース: https://github.com/mas256/recurrence-equation-generator

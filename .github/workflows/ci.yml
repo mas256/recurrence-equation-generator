@@ -1,0 +1,34 @@
+name: Rust and offline HTML checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --features browser
+      - run: cargo clippy --locked --all-targets --features browser -- -D warnings
+      - run: rustup target add wasm32-unknown-unknown
+      - run: cargo check --locked --lib --no-default-features --features browser --target wasm32-unknown-unknown
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx --no-install playwright-core install --with-deps chromium
+      - name: Verify the distributed HTML directly from file URLs
+        run: |
+          export CHROMIUM_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          npm run test:offline

@@ -1,0 +1,7302 @@
+[
+  {
+    "id": "554fbcfa3414bf0f318f4863d15262cab8c792631200f47b6a386eaca7864a39",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "arithmetic",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_lift",
+          "parameters": {
+            "increment": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+1\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=n-1+3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 1,
+      "score": 3,
+      "total_score": 3,
+      "parts": {
+        "B": 3,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "等差数列の基本形",
+      "operations": [
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "等差数列として解く",
+      "metrics": {
+        "nodes": 4,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "440e222db7218c0120a2349317c2416522d50557cc718750f03c317102fa3086",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "geometric",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [],
+      "output": "core",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=4\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3\\,4^{n-1}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 1,
+      "score": 2,
+      "total_score": 2,
+      "parts": {
+        "B": 2,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "等比数列の基本形",
+      "operations": [
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "等比数列として解く",
+      "metrics": {
+        "nodes": 4,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "fa1b545b1706e12db55cd3ca9418b99549798ade730940e1832dc3948c75152b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_constant",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {}
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n+1}{n}\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3\\,n\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 5,
+      "parts": {
+        "B": 3,
+        "R": 1,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "単項式の倍率の階比を相殺する",
+      "operations": [
+        "ratio_product",
+        "evaluate_product"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "nで割って正規化する",
+      "metrics": {
+        "nodes": 6,
+        "fraction_depth": 1,
+        "display_terms": 1,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "9bd5593b7828353e16da868017201cd449ba6a1a91503ed43aed4d6993ee6bbe",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "factorial_ratio",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "factorial_product",
+          "parameters": {
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=4\\,n\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3\\,4^{n-1}\\,\\left(n-1\\right)!\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 4,
+      "parts": {
+        "B": 3,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "単項式の階比を総積で処理する",
+      "operations": [
+        "ratio_product",
+        "evaluate_product"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "階比を階乗にまとめる",
+      "metrics": {
+        "nodes": 5,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "9a45c2ca72754e555a0179075e5b072444ab5b156416c4cf895810426fdf9f52",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "second_order",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        },
+        "s": {
+          "num": "5",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "1",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}=9\\,a_{n+1}+\\left(-20\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=4\\quad a_{2}=17\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3\\,4^{n-1}+5^{n-1}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 11,
+      "parts": {
+        "B": 5,
+        "R": 2,
+        "A": 4,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "基本的な3項間を特性方程式の異なる2根で解く",
+      "operations": [
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "特性方程式を解く",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "ad73eda7671c3d67b2b7aecc4257fb2daf749027718d10bc01b19c37afb40b9b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_affine",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "1",
+            "den": "3"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_lift",
+          "parameters": {
+            "increment": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{a_{n}+1}\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{3}{3\\,\\left(n-1\\right)+1}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 8,
+      "parts": {
+        "B": 6,
+        "R": 1,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "定数係数の一次分数を逆数に帰着させる",
+      "operations": [
+        "reciprocal",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "逆数を等差数列にする",
+      "metrics": {
+        "nodes": 6,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "4e13f0a84a1948c67fde2b83e5550e725e8ed2b9d63eca642c4591dcea3d748d",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "weighted_sum",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        },
+        "s": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "3",
+            "den": "2"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "-1",
+              "den": "2"
+            },
+            "ratio": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {}
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b3",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\left(n+1\\right)\\,\\left(8\\,\\frac{a_{n}}{n}+\\left(-3\\right)\\,\\sum_{k=1}^{n}\\frac{a_{k}}{k}\\right)\\quad(n\\ge1)\\\\a_{1}=1\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=n\\,\\left(\\frac{3}{2}\\,4^{n-1}+\\left(-\\frac{1}{2}\\right)\\,2^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 15,
+      "parts": {
+        "B": 11,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "重みをそろえ、総和を消し、3項間を解く",
+      "operations": [
+        "index_scale",
+        "eliminate_sum",
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.0/reference-0.7.0",
+      "method_name": "正規化して総和を消す",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "ac62eb64798d26690f7ec7696b763b1e0d42bbb23743ae6367b9234a7b9c1341",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "affine",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [],
+      "output": "core",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,a_{n}-6\\quad(n\\ge1)\\\\a_{1}=12\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,3^{n-1}+3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 5,
+      "total_score": 7,
+      "parts": {
+        "B": 4,
+        "R": 1,
+        "A": 2,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "不動点を引き、等比数列に帰着する",
+      "operations": [
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "不動点を引いて等比数列にする",
+      "metrics": {
+        "nodes": 6,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "fdb00010d44200ebad8739afc3d9ebaf7710ff2054459645f2b920ca03889d3b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{\\left(n+1\\right)^{2}}{\\left(n\\right)^{2}}\\,a_{n}+3\\,\\left(\\frac{\\left(n+1\\right)^{2}}{\\left(n\\right)^{2}}-1\\right)\\quad(n\\ge1)\\\\a_{1}=6\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,\\left(n\\right)^{2}-3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 10,
+      "total_score": 9,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 18,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "5fc6a0238c69ded3e917eb2893ffee3c40d29f05a1c0466baa4ea788ca0da2a5",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "11",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "11",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{2\\,n+1}{2\\,\\left(n+1\\right)+1}\\,a_{n}+3\\,\\left(\\frac{2\\,n+1}{2\\,\\left(n+1\\right)+1}-1\\right)\\quad(n\\ge1)\\\\a_{1}=0\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,\\frac{1}{2\\,n+1}-3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 9,
+      "parts": {
+        "B": 6,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "8815bf05ad1721670aff91ddf1c60a1317aa00045f73b0b7f6da79c2312efd97",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "8",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "8",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{\\left(n\\right)^{2}}{\\left(n+1\\right)^{2}}\\,a_{n}+\\frac{\\left(n\\right)^{2}}{\\left(n+1\\right)^{2}}-1\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=5\\,\\frac{1}{\\left(n\\right)^{2}}-1\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 10,
+      "total_score": 9,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "fdf7f895a7a7d5ad896bcdeb5abf463a0f1c3b9811f71bea0aa763241a7f56e6",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{\\left(n+1\\right)\\,\\left(n+1+2\\right)}{n\\,\\left(n+2\\right)}\\,a_{n}+\\frac{\\left(n+1\\right)\\,\\left(n+1+2\\right)}{n\\,\\left(n+2\\right)}-1\\quad(n\\ge1)\\\\a_{1}=14\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=5\\,n\\,\\left(n+2\\right)-1\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 27,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "64a324ed11ea58b35abdf932f681d8853e4a9fbc610540caf42573941256733b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "5",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "5",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{2\\,\\left(n+1\\right)+1}{2\\,n+1}\\,a_{n}+3\\,\\left(\\frac{2\\,\\left(n+1\\right)+1}{2\\,n+1}-1\\right)\\quad(n\\ge1)\\\\a_{1}=24\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,\\left(2\\,n+1\\right)-3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "39e2c1b269953a9c29a98e1bbddc3a8eaec1a6e852ed6bed2e560f0c246efefa",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n+1}{n}\\,a_{n}+\\frac{n+1}{n}-1\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=4\\,n-1\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 10,
+      "total_score": 8,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 11,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "891cf778373a7ee05065e0e050f80af61d1b54d04a05c8d24d00f37c3f5ebd1b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n+1+1}{n+1}\\,a_{n}+\\frac{n+1+1}{n+1}-1\\quad(n\\ge1)\\\\a_{1}=7\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=4\\,\\left(n+1\\right)-1\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 10,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 1,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 1,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 19,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "e5793af18e693bc67e81f838ac370a33fea7a9866ce00d1f1db8673e62e8dcb0",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "7",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "9",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "6",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "9",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n\\,\\left(n+1\\right)}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}\\,a_{n}+2\\,\\left(\\frac{n\\,\\left(n+1\\right)}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}-1\\right)\\quad(n\\ge1)\\\\a_{1}=1\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=6\\,\\frac{1}{n\\,\\left(n+1\\right)}-2\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 11,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "883dc15ffdd7c99b7832816b1758ffe15e2c1933a7608aed64b80430d7f003a2",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "9",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "6",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "6",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n}{n+1}\\,a_{n}+2\\,\\left(\\frac{n}{n+1}-1\\right)\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=6\\,\\frac{1}{n}-2\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 7,
+      "parts": {
+        "B": 6,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 14,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "15fc3dbea58b9620a8be19f66186e9f7c1c56e6e2312c1806d9ba78f21af2d59",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "10",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{\\left(n+1\\right)\\,\\left(n+1+1\\right)}{n\\,\\left(n+1\\right)}\\,a_{n}+3\\,\\left(\\frac{\\left(n+1\\right)\\,\\left(n+1+1\\right)}{n\\,\\left(n+1\\right)}-1\\right)\\quad(n\\ge1)\\\\a_{1}=15\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,n\\,\\left(n+1\\right)-3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 13,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "252ad032a9ac00a0ad5e4f775ba81e8d0341aefa082797eb5382c4cc5f892338",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "17",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "8",
+          "den": "1"
+        },
+        "profile": {
+          "num": "10",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "8",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "10",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n\\,\\left(n+2\\right)}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}\\,a_{n}+2\\,\\left(\\frac{n\\,\\left(n+2\\right)}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}-1\\right)\\quad(n\\ge1)\\\\a_{1}=\\frac{2}{3}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=8\\,\\frac{1}{n\\,\\left(n+2\\right)}-2\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 11,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数の移動を組み合わせる",
+      "operations": [
+        "shift",
+        "index_scale",
+        "constant"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "9f9b0f2d99556229234b5480aeeb4e98efb51c6963399ccd3d353aa119577c8f",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "shifted_scaled",
+      "seed": "28",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "7",
+          "den": "1"
+        },
+        "profile": {
+          "num": "7",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "7",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "7",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{n+1}{n+1+1}\\,a_{n}+3\\,\\left(\\frac{n+1}{n+1+1}-1\\right)\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=7\\,\\frac{1}{n+1}-3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 8,
+      "parts": {
+        "B": 6,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 22,
+        "fraction_depth": 1,
+        "display_terms": 7,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "4076973084505ab16c1913d0c2d4738a969ebf8fd79b364756b287f6766fda22",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "11",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "11",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{2\\,n+1}{2\\,\\left(n+1\\right)+1}\\,a_{n}+\\left(-6\\right)\\,\\frac{1}{2\\,\\left(n+1\\right)+1}\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2\\,n+1}\\,\\left(9\\,3^{n-1}+3\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 25,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "e394b000d45b28285380de44d932553834b1b4d936810b8199f2561909677810",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "5",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "5",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-2",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{2\\,\\left(n+1\\right)+1}{2\\,n+1}\\,a_{n}+\\left(-2\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\quad(n\\ge1)\\\\a_{1}=18\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(2\\,n+1\\right)\\,\\left(5\\,3^{n-1}+1\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 13,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 23,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "5a2cbf4a9ebd1060224822414d19241040131c92703373e659bf320b0224215e",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "5",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "6",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{n}{n+1}\\,a_{n}+\\left(-6\\right)\\,\\frac{1}{n+1}\\quad(n\\ge1)\\\\a_{1}=12\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{n}\\,\\left(9\\,3^{n-1}+3\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 11,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 13,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "532807cfcfafdc2bb9a3cb9ba04ad7a6d42e67c34b212f4d4c8335060363eb25",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "4",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-1",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=2\\,\\frac{n+1}{n}\\,a_{n}+\\left(-1\\right)\\,\\left(n+1\\right)\\quad(n\\ge1)\\\\a_{1}=5\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=n\\,\\left(4\\,2^{n-1}+1\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 10,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 11,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "66d0e37a7a1a14e5a77ecef80ad60ae1a2d9d7b099498a6d36f98f2396c04483",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "7",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "9",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "9",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=4\\,\\frac{n\\,\\left(n+1\\right)}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}\\,a_{n}+\\left(-6\\right)\\,\\frac{1}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{n\\,\\left(n+1\\right)}\\,\\left(6\\,4^{n-1}+2\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 11,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 25,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "4d86fc8d0f4544ed782f53f92c15c552dbee56c094304719616cfd043e5a5e08",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "9",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "7",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-4",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "7",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{n+1}{n+1+1}\\,a_{n}+\\left(-4\\right)\\,\\frac{1}{n+1+1}\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{n+1}\\,\\left(6\\,3^{n-1}+2\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 10,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 19,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "94fc5166b6710ebb86014037b9a1505a8e42297c58f8dada521a885751c15791",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "10",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-3",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=2\\,\\frac{n+1+1}{n+1}\\,a_{n}+\\left(-3\\right)\\,\\left(n+1+1\\right)\\quad(n\\ge1)\\\\a_{1}=24\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n+1\\right)\\,\\left(9\\,2^{n-1}+3\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 14,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 4,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 17,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "c238c63cdaa0f953666dd6f21bd98d63596d0a6825eea13d0a5316c288a6164a",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "17",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "8",
+          "den": "1"
+        },
+        "profile": {
+          "num": "10",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "8",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-4",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "10",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{n\\,\\left(n+2\\right)}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}\\,a_{n}+\\left(-4\\right)\\,\\frac{1}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}\\quad(n\\ge1)\\\\a_{1}=\\frac{10}{3}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{n\\,\\left(n+2\\right)}\\,\\left(8\\,3^{n-1}+2\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 13,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 25,
+        "fraction_depth": 1,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "7ca06485c5eb5d0cc0c60632a620620a4014fee8bb98d8e6894df45dcc3bb2b9",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_affine",
+      "seed": "28",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "7",
+          "den": "1"
+        },
+        "profile": {
+          "num": "8",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "7",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "8",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,\\frac{\\left(n\\right)^{2}}{\\left(n+1\\right)^{2}}\\,a_{n}+\\left(-6\\right)\\,\\frac{1}{\\left(n+1\\right)^{2}}\\quad(n\\ge1)\\\\a_{1}=10\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\left(n\\right)^{2}}\\,\\left(7\\,3^{n-1}+3\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階比の正規化と定数項の消去を組み合わせる",
+      "operations": [
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "倍率で正規化して定数項を消す",
+      "metrics": {
+        "nodes": 16,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "715da073976f98ed132eadd6688243f741dc2f5da7ce7a4fd449ae2336bff11c",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "11",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "11",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{2\\,n+1}{2\\,\\left(n+1\\right)+1}+\\left(-6\\right)\\,\\frac{1}{2\\,\\left(n+1\\right)+1}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{4}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{2\\,n+1}\\,\\left(9\\,3^{n-1}+3\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 18,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 2,
+        "T": 1,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 27,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "a1b4084915ee59e8622f5ad1ad3e152c947215387fbc0cbb7168e92006dc5c2c",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "5",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "5",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-2",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{2\\,\\left(n+1\\right)+1}{2\\,n+1}+\\left(-2\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{18}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\left(2\\,n+1\\right)\\,\\left(5\\,3^{n-1}+1\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 19,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 2,
+        "T": 1,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 25,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "539be5e96cb7d08f660131035a3dddd40639fcb4d3df8c914612860682b8eb40",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "5",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "6",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{n}{n+1}+\\left(-6\\right)\\,\\frac{1}{n+1}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{12}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{n}\\,\\left(9\\,3^{n-1}+3\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 19,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 4,
+        "T": 1,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 2,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "a571241dd92bca4fb2e1251049f5d64b988bc1a429b75e7f6df67e6d5e0d67d7",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "4",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-1",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{2\\,\\frac{n+1}{n}+\\left(-1\\right)\\,\\left(n+1\\right)\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{5}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{n\\,\\left(4\\,2^{n-1}+1\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 16,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 13,
+        "fraction_depth": 2,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "00df311a1d03009b4837adcc23b31692af67f31f4172ff9e8ad5e4bbe2267932",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "7",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "9",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "9",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{4\\,\\frac{n\\,\\left(n+1\\right)}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}+\\left(-6\\right)\\,\\frac{1}{\\left(n+1\\right)\\,\\left(n+1+1\\right)}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{4}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{n\\,\\left(n+1\\right)}\\,\\left(6\\,4^{n-1}+2\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 17,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 27,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "211478e17a21bd0a1e3ae9e14999c09c3b466cb4ca50e787431657dee89301df",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "9",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "7",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-4",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "7",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{n+1}{n+1+1}+\\left(-4\\right)\\,\\frac{1}{n+1+1}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{4}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{n+1}\\,\\left(6\\,3^{n-1}+2\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 16,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 21,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "6e530b466e967f1a303711604f4ef7f5eca8ba660bfaa7654292dc3ca8e29a49",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "10",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-3",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{2\\,\\frac{n+1+1}{n+1}+\\left(-3\\right)\\,\\left(n+1+1\\right)\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{24}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\left(n+1\\right)\\,\\left(9\\,2^{n-1}+3\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 21,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 4,
+        "T": 1,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 19,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "6588334255d82c95f07117bbf219aba3d84ef4852c803db4d61a968cef74c47d",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "17",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "8",
+          "den": "1"
+        },
+        "profile": {
+          "num": "10",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "8",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-4",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "10",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{n\\,\\left(n+2\\right)}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}+\\left(-4\\right)\\,\\frac{1}{\\left(n+1\\right)\\,\\left(n+1+2\\right)}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{3}{10}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{n\\,\\left(n+2\\right)}\\,\\left(8\\,3^{n-1}+2\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 19,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 2,
+        "T": 1,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 27,
+        "fraction_depth": 2,
+        "display_terms": 5,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f49fdd221e42b11f0653d379d7e500205df9a3592f17a9e59caf36230b1f622b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_scaled",
+      "seed": "28",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "7",
+          "den": "1"
+        },
+        "profile": {
+          "num": "8",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "7",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-6",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "3",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "8",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{3\\,\\frac{\\left(n\\right)^{2}}{\\left(n+1\\right)^{2}}+\\left(-6\\right)\\,\\frac{1}{\\left(n+1\\right)^{2}}\\,a_{n}}\\quad(n\\ge1)\\\\a_{1}=\\frac{1}{10}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{\\frac{1}{\\left(n\\right)^{2}}\\,\\left(7\\,3^{n-1}+3\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 19,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 3,
+        "T": 1,
+        "P": 2,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "index_scale",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 3,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 18,
+        "fraction_depth": 2,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "394d521a38dd9d6ef3ad75e28c204766692b50b9423398edfda04c64322fc29a",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_forcing",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "intercept": {
+              "num": "-3",
+              "den": "2"
+            },
+            "slope": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=3\\,a_{n}+6\\,n\\quad(n\\ge1)\\\\a_{1}=\\frac{9}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=9\\,3^{n-1}+\\left(-3\\right)\\,n-\\frac{3}{2}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 8,
+      "total_score": 8,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "一次式の特解を引いて等比数列に帰着する",
+      "operations": [
+        "polynomial_shift",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次式の特解を引く",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "c54679391802efa1735735adab562d2c834eab7edc737ace70222bfc464ebed6",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "reciprocal_forcing",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "9",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "intercept": {
+              "num": "-3",
+              "den": "2"
+            },
+            "slope": {
+              "num": "-3",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "reciprocal",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{a_{n}}{6\\,n\\,a_{n}+3}\\quad(n\\ge1)\\\\a_{1}=\\frac{2}{9}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{9\\,3^{n-1}+\\left(-3\\right)\\,n-\\frac{3}{2}}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 13,
+      "parts": {
+        "B": 9,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "逆数と変数係数・特解を組み合わせる",
+      "operations": [
+        "reciprocal",
+        "polynomial_shift",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "逆数をとって補助数列を解く",
+      "metrics": {
+        "nodes": 9,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "48ac3ae7333bc89b93b8523603d8069d49401d4c60fcbd002f338b79f507852f",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "3",
+              "den": "1"
+            },
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+3\\,\\left(n+1\\right)\\quad(n\\ge1)\\\\a_{1}=9\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{3}{2}\\,\\left(n-1\\right)\\,\\left(n+2\\right)+9\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 1,
+      "score": 3,
+      "total_score": 3,
+      "parts": {
+        "B": 3,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "17972c08adb8aa3cfe35814e6b4f167700ab77f1a4dd197dd26b552b36606ae2",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "9",
+          "den": "1"
+        },
+        "profile": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "9",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "3",
+              "den": "1"
+            },
+            "profile": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+3\\,n\\,\\left(n+1\\right)\\quad(n\\ge1)\\\\a_{1}=9\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n-1\\right)\\,n\\,\\left(n+1\\right)+9\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 4,
+      "total_score": 5,
+      "parts": {
+        "B": 4,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 9,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f03b890a94b68436de2e20a3a30de97d890d901617ee88abe4c9dcaa88b5419b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "5",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+2\\,n+1\\quad(n\\ge1)\\\\a_{1}=5\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n-1\\right)\\,\\left(n+1\\right)+5\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 1,
+      "score": 3,
+      "total_score": 3,
+      "parts": {
+        "B": 3,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 7,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f5026a0cd5f2f5ce0779a653772447a9e929d895b51b42ca0ae575f65618526e",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+n\\,\\left(n+2\\right)\\quad(n\\ge1)\\\\a_{1}=5\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{6}\\,\\left(n-1\\right)\\,n\\,\\left(2\\,n+5\\right)+5\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 4,
+      "total_score": 5,
+      "parts": {
+        "B": 4,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f0f99bee2cfbac997afb51e4f0cb143b53cf5b0f450ae7d97e94d1f97d334482",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+n\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(n-1\\right)\\,n+4\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 1,
+      "score": 3,
+      "total_score": 3,
+      "parts": {
+        "B": 3,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 4,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "3b7d50813462c46355f57cd40fe6df2bfddda1006b2fa7a7ef0280c7f7aaebe4",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "polynomial_difference",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "difference_polynomial",
+          "parameters": {
+            "coefficient": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=a_{n}+\\left(n\\right)^{2}\\quad(n\\ge1)\\\\a_{1}=4\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{6}\\,\\left(n-1\\right)\\,n\\,\\left(2\\,n-1\\right)+4\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 4,
+      "total_score": 5,
+      "parts": {
+        "B": 4,
+        "R": 0,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "多項式の階差を初項から足し合わせる",
+      "operations": [
+        "difference_sum",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "多項式の階差を足し合わせる",
+      "metrics": {
+        "nodes": 5,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "437a74741f3a0a054d2f3bc3a782d6d29b98dbbbcf89e341fb3547161cbe0abd",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "mobius",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "7",
+          "den": "1"
+        },
+        "h": {
+          "num": "3",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "affine_fixed_point",
+        "parameters": {
+          "amplitude": {
+            "num": "7",
+            "den": "1"
+          },
+          "constant_term": {
+            "num": "-3",
+            "den": "1"
+          },
+          "fixed_point": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "mobius_encode",
+          "parameters": {
+            "shift": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{\\left(-8\\right)\\,a_{n}+36}{\\left(-3\\right)\\,a_{n}+13}\\quad(n\\ge1)\\\\a_{1}=\\frac{25}{8}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{7\\,4^{n-1}+1}+3\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 17,
+      "parts": {
+        "B": 9,
+        "R": 3,
+        "A": 4,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "シンプルな1次分数を不動点・逆数で解く",
+      "operations": [
+        "fixed_point",
+        "reciprocal",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "不動点からの差の逆数をとる",
+      "metrics": {
+        "nodes": 12,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "35b482c0945578cc74329134207da65669190f0eed84489206966a5d3d77d7a7",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_second_order",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "1",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}n\\,\\left(n+1\\right)\\,a_{n+2}=7\\,n\\,\\left(n+2\\right)\\,a_{n+1}+\\left(-12\\right)\\,\\left(n+1\\right)\\,\\left(n+2\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=4\\quad a_{2}=30\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=n\\,\\left(3^{n-1}+3\\,4^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 17,
+      "parts": {
+        "B": 8,
+        "R": 2,
+        "A": 6,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "正規化して3項間を解く",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 7,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "正規化して特性多項式を使う",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "ead8432300f2c2f7fb7be2b5815f9920742e152ec5be47df7c4bd194b2e9d2c2",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_second_order",
+      "seed": "4",
+      "parameters": {
+        "c": {
+          "num": "5",
+          "den": "1"
+        },
+        "d": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "5",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "5",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(2\\,n+1\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,a_{n+2}=6\\,\\left(2\\,n+1\\right)\\,\\left(2\\,\\left(n+2\\right)+1\\right)\\,a_{n+1}+\\left(-8\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,\\left(2\\,\\left(n+2\\right)+1\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=30\\quad a_{2}=150\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(2\\,n+1\\right)\\,\\left(5\\,2^{n-1}+5\\,4^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 20,
+      "parts": {
+        "B": 8,
+        "R": 2,
+        "A": 6,
+        "T": 0,
+        "P": 4,
+        "U": 0
+      },
+      "reason": "正規化して3項間を解く",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 7,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "正規化して特性多項式を使う",
+      "metrics": {
+        "nodes": 39,
+        "fraction_depth": 0,
+        "display_terms": 8,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f2d8611f9ce13fbe8702af50f291e29b3735cc27eae1ba7f62b55b1b6f2b0928",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "scaled_second_order",
+      "seed": "6",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        },
+        "s": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "1",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(n+1\\right)\\,\\left(n+2\\right)\\,a_{n+2}=6\\,\\left(n+1\\right)\\,\\left(n+3\\right)\\,a_{n+1}+\\left(-8\\right)\\,\\left(n+2\\right)\\,\\left(n+3\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=6\\quad a_{2}=30\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n+1\\right)\\,\\left(2\\,4^{n-1}+2^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 14,
+      "parts": {
+        "B": 8,
+        "R": 2,
+        "A": 3,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "正規化して3項間を解く",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 3,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "正規化して特性多項式を使う",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "1c960df04df6c181417baf7b0ba35655ac883d4610a8cffd25fc8d7bbe782846",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "difference_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "6",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "difference_lift",
+          "parameters": {
+            "initial": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(n+1\\right)\\,a_{n+2}=\\left(5\\,n+9\\right)\\,a_{n+1}+\\left(-4\\right)\\,\\left(n+2\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=6\\quad a_{2}=18\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(2\\,n-\\frac{2}{3}\\right)\\,4^{n-1}+\\frac{14}{3}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 18,
+      "parts": {
+        "B": 11,
+        "R": 3,
+        "A": 4,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階差・階比・多項式と等比の和を組み合わせる",
+      "operations": [
+        "difference",
+        "index_scale",
+        "geometric",
+        "geometric_sum"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "階差を正規化し、和の相殺で戻す",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "e25f15f6c045e455b12ad60e3ca7d49e6174fac897d28aa8b99e8802ccc7ba63",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "difference_scaled",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "difference_lift",
+          "parameters": {
+            "initial": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}n\\,a_{n+2}=\\left(4\\,n+3\\right)\\,a_{n+1}+\\left(-3\\right)\\,\\left(n+1\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=1\\quad a_{2}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n-\\frac{3}{2}\\right)\\,3^{n-1}+\\frac{3}{2}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 14,
+      "parts": {
+        "B": 11,
+        "R": 3,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階差・階比・多項式と等比の和を組み合わせる",
+      "operations": [
+        "difference",
+        "index_scale",
+        "geometric",
+        "geometric_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "階差を正規化し、和の相殺で戻す",
+      "metrics": {
+        "nodes": 15,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "787a1e3fbdad398c150a44e2595231f1ce51ed1e86113e7dca2fec6abf2f8fc3",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "difference_scaled",
+      "seed": "4",
+      "parameters": {
+        "c": {
+          "num": "4",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "difference_lift",
+          "parameters": {
+            "initial": {
+              "num": "4",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(2\\,n+1\\right)\\,a_{n+2}=\\left(10\\,n+13\\right)\\,a_{n+1}+\\left(-4\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=4\\quad a_{2}=22\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(4\\,n-\\frac{10}{3}\\right)\\,4^{n-1}+\\frac{10}{3}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 21,
+      "parts": {
+        "B": 11,
+        "R": 3,
+        "A": 6,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "階差・階比・多項式と等比の和を組み合わせる",
+      "operations": [
+        "difference",
+        "index_scale",
+        "geometric",
+        "geometric_sum"
+      ],
+      "numeric_cost": 7,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "階差を正規化し、和の相殺で戻す",
+      "metrics": {
+        "nodes": 23,
+        "fraction_depth": 0,
+        "display_terms": 5,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "bc7c20f7fbb8e7b2fb858039322271c9fd7736f4b813e4e3c702fc5067f23a33",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "forced_second",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "6",
+          "den": "1"
+        },
+        "d": {
+          "num": "4",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        },
+        "s": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "4",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "6",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "add_constant",
+          "parameters": {
+            "value": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}=5\\,a_{n+1}+\\left(-6\\right)\\,a_{n}+12\\quad(n\\ge1)\\\\a_{1}=16\\quad a_{2}=30\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=4\\,3^{n-1}+6\\,2^{n-1}+6\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 13,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 4,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "定数項を消して3項間漸化式を解く",
+      "operations": [
+        "shift",
+        "characteristic_distinct"
+      ],
+      "numeric_cost": 4,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "定数項を消して3項間を解く",
+      "metrics": {
+        "nodes": 9,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "063619ed9e18f3fbb7e396c9e8cb5a92e10b3cf571eb7d20916e5548cc9d4e8c",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "arithmetic_difference",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "6",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "s": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "6",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "second_difference",
+          "parameters": {
+            "first_difference": {
+              "num": "3",
+              "den": "1"
+            },
+            "increment": {
+              "num": "6",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}=2\\,a_{n+1}+\\left(-1\\right)\\,a_{n}+6\\quad(n\\ge1)\\\\a_{1}=6\\quad a_{2}=9\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3\\,\\left(n-1\\right)+3\\,\\left(n-1\\right)\\,\\left(n-1-1\\right)+6\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 6,
+      "parts": {
+        "B": 5,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "階差を等差数列として解き、和で戻す",
+      "operations": [
+        "difference",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "階差を等差数列として解く",
+      "metrics": {
+        "nodes": 9,
+        "fraction_depth": 0,
+        "display_terms": 3,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "e0ca218b4c897cad2d9a9f2ea30a71a28473ab57cb5ac3e344a774090a9a5abd",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "pure_sum",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "5",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "constant": {
+              "num": "-3",
+              "den": "2"
+            },
+            "linear": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "partial_sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\sum_{k=1}^{n+1}a_{k}=4\\,\\sum_{k=1}^{n}a_{k}+\\left(-15\\right)\\,n+\\frac{19}{2}\\quad(n\\ge1)\\\\\\sum_{k=1}^{1}a_{k}=\\frac{19}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{9}{2}\\,4^{n-1}+5\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 15,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 6,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "部分和を求める、または差で総和を消す",
+      "operations": [
+        "eliminate_sum",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 6,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和の差で総和を消す",
+      "metrics": {
+        "nodes": 11,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "f115128af9b70f351c37ab72d3b69f3571f3d7b5114fefb405d4054b1a98c857",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "pure_sum",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "constant": {
+              "num": "-2",
+              "den": "3"
+            },
+            "linear": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "partial_sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\sum_{k=1}^{n+1}a_{k}=3\\,\\sum_{k=1}^{n}a_{k}+\\frac{4}{3}\\quad(n\\ge1)\\\\\\sum_{k=1}^{1}a_{k}=\\frac{4}{3}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{4}{3}\\,3^{n-1}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 6,
+      "parts": {
+        "B": 5,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "部分和を求める、または差で総和を消す",
+      "operations": [
+        "eliminate_sum",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和の差で総和を消す",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "fa6d4ee4b19f3cf9732472d242bd6b6ef2cb0577ea7ff5bc526a3f6008f4d990",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "pure_sum_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "-9",
+          "den": "2"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "5",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        },
+        "s": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "-9",
+              "den": "2"
+            },
+            "ratio": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "partial_sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b3",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(2\\,n+1\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,\\sum_{k=1}^{n+2}a_{k}=7\\,\\left(2\\,n+1\\right)\\,\\left(2\\,\\left(n+2\\right)+1\\right)\\,\\sum_{k=1}^{n+1}a_{k}+\\left(-12\\right)\\,\\left(2\\,\\left(n+1\\right)+1\\right)\\,\\left(2\\,\\left(n+2\\right)+1\\right)\\,\\sum_{k=1}^{n}a_{k}\\quad(n\\ge1)\\\\\\sum_{k=1}^{1}a_{k}=\\frac{9}{2}\\quad \\sum_{k=1}^{2}a_{k}=\\frac{105}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(2\\,n+1\\right)\\,\\left(6\\,4^{n-1}+\\left(-\\frac{9}{2}\\right)\\,3^{n-1}\\right)+\\left(-1\\right)\\,\\left(2\\,\\left(n-1\\right)+1\\right)\\,\\left(\\frac{3}{2}\\,4^{n-1}+\\left(-\\frac{3}{2}\\right)\\,3^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 24,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 6,
+        "T": 1,
+        "P": 4,
+        "U": 0
+      },
+      "reason": "部分和の正規化と3項間と差を組み合わせる",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct",
+        "recover_sum"
+      ],
+      "numeric_cost": 7,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和を正規化して3項間を解く",
+      "metrics": {
+        "nodes": 42,
+        "fraction_depth": 0,
+        "display_terms": 8,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "26dfe4fa2b92b2fc3fe2394075fde616d006b2732141c9146b44a77a9bad63cb",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "pure_sum_scaled",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        },
+        "s": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "1",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "partial_sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b3",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}n\\,\\left(n+1\\right)\\,\\sum_{k=1}^{n+2}a_{k}=5\\,n\\,\\left(n+2\\right)\\,\\sum_{k=1}^{n+1}a_{k}+\\left(-6\\right)\\,\\left(n+1\\right)\\,\\left(n+2\\right)\\,\\sum_{k=1}^{n}a_{k}\\quad(n\\ge1)\\\\\\sum_{k=1}^{1}a_{k}=3\\quad \\sum_{k=1}^{2}a_{k}=16\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=n\\,\\left(2\\,3^{n-1}+2^{n-1}\\right)+\\left(-1\\right)\\,\\left(n-1\\right)\\,\\left(\\frac{2}{3}\\,3^{n-1}+\\frac{1}{2}\\,2^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 15,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 0,
+        "T": 1,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "部分和の正規化と3項間と差を組み合わせる",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct",
+        "recover_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和を正規化して3項間を解く",
+      "metrics": {
+        "nodes": 18,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "2b501235a619bb758f6e7e5218f1b9b59584b663fbd610eab5575f20ae0fc3b7",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "pure_sum_scaled",
+      "seed": "9",
+      "parameters": {
+        "c": {
+          "num": "-4",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        },
+        "s": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "linear_combination",
+          "parameters": {
+            "amplitude": {
+              "num": "-4",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "partial_sum_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b3",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(n+1\\right)\\,\\left(n+1+1\\right)\\,\\sum_{k=1}^{n+2}a_{k}=5\\,\\left(n+1\\right)\\,\\left(n+2+1\\right)\\,\\sum_{k=1}^{n+1}a_{k}+\\left(-6\\right)\\,\\left(n+1+1\\right)\\,\\left(n+2+1\\right)\\,\\sum_{k=1}^{n}a_{k}\\quad(n\\ge1)\\\\\\sum_{k=1}^{1}a_{k}=4\\quad \\sum_{k=1}^{2}a_{k}=30\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\left(n+1\\right)\\,\\left(6\\,3^{n-1}+\\left(-4\\right)\\,2^{n-1}\\right)+\\left(-1\\right)\\,\\left(n-1+1\\right)\\,\\left(2\\,3^{n-1}+\\left(-2\\right)\\,2^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 19,
+      "parts": {
+        "B": 10,
+        "R": 3,
+        "A": 2,
+        "T": 1,
+        "P": 3,
+        "U": 0
+      },
+      "reason": "部分和の正規化と3項間と差を組み合わせる",
+      "operations": [
+        "index_scale",
+        "characteristic_distinct",
+        "recover_sum"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和を正規化して3項間を解く",
+      "metrics": {
+        "nodes": 30,
+        "fraction_depth": 0,
+        "display_terms": 8,
+        "coefficient_degree": 2,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "8ce1cf447f40c36a23f4aec6933cb24e2dea812e63c5e0a952d6e3fcfd66d1b2",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "sum_relation",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "5",
+          "den": "1"
+        },
+        "d": {
+          "num": "6",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "6",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "4",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "constant": {
+              "num": "0",
+              "den": "1"
+            },
+            "linear": {
+              "num": "5",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "sum_relation_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\sum_{k=1}^{n}a_{k}=\\frac{4}{3}\\,a_{n}+\\frac{5}{2}\\,n\\,\\left(n+1\\right)+\\left(-\\frac{20}{3}\\right)\\,n-2\\quad(n\\ge1)\\\\a_{1}=11\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=6\\,4^{n-1}+5\\,n\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 17,
+      "parts": {
+        "B": 9,
+        "R": 2,
+        "A": 6,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "隣接する式の差で総和を消す",
+      "operations": [
+        "eliminate_sum",
+        "polynomial_shift",
+        "geometric"
+      ],
+      "numeric_cost": 6,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和と項の関係から総和を消す",
+      "metrics": {
+        "nodes": 14,
+        "fraction_depth": 1,
+        "display_terms": 4,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "70585570fe5dc1e29624ccf21c21147495aa302e8b7a4cd92d533a5f85035634",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "sum_relation",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "constant": {
+              "num": "1",
+              "den": "1"
+            },
+            "linear": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "sum_relation_encode",
+          "parameters": {}
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\sum_{k=1}^{n}a_{k}=\\frac{3}{2}\\,a_{n}+n-\\frac{5}{2}\\quad(n\\ge1)\\\\a_{1}=3\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=2\\,3^{n-1}+1\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 2,
+      "score": 6,
+      "total_score": 9,
+      "parts": {
+        "B": 7,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "隣接する式の差で総和を消す",
+      "operations": [
+        "eliminate_sum",
+        "fixed_point",
+        "geometric"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "部分和と項の関係から総和を消す",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "ae4aba4e3afc5da430f692ea01ff99a5f66a34e086ad8a41379f95ce66bbe358",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "ratio_power",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "4",
+          "den": "5"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "5"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "base": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=2^{\\left(2\\right)\\left(n\\right)+1}\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=\\frac{4}{5}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{4}{5}\\,2^{\\left(n-1\\right)\\left(n+1\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 5,
+      "parts": {
+        "B": 4,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "指数係数の階比で指数の和を計算する",
+      "operations": [
+        "ratio_product",
+        "evaluate_product",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "比を掛けて指数を足す",
+      "metrics": {
+        "nodes": 5,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 1
+      }
+    }
+  },
+  {
+    "id": "d134579a503d7ed01e0b33fd085c37886afec0f0dd1e609bca1dd296a8cc15fc",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "ratio_power",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "4",
+          "den": "5"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "4",
+            "den": "5"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "base": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=2^{\\binom{n+1}{2}}\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=\\frac{4}{5}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{4}{5}\\,2^{\\binom{n+1}{3}}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 7,
+      "parts": {
+        "B": 5,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "指数係数の階比で指数の和を計算する",
+      "operations": [
+        "ratio_product",
+        "evaluate_product",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "比を掛けて指数を足す",
+      "metrics": {
+        "nodes": 5,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 2
+      }
+    }
+  },
+  {
+    "id": "8eb2ad22d217aca13f9590502b0e8f6f940a68736f129835b1f96d2b8ffc1f5a",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "ratio_power",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "5",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "base": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile": {
+              "num": "0",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=2^{n}\\,a_{n}\\quad(n\\ge1)\\\\a_{1}=5\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=5\\,2^{\\binom{n}{2}}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 5,
+      "parts": {
+        "B": 4,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "指数係数の階比で指数の和を計算する",
+      "operations": [
+        "ratio_product",
+        "evaluate_product",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "比を掛けて指数を足す",
+      "metrics": {
+        "nodes": 5,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 1
+      }
+    }
+  },
+  {
+    "id": "1a38e165f1a1ba1dc92312863242650c8b5e51cda57ee9c7daa730e4715376b5",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "multiplicative_second",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "3",
+          "den": "1"
+        },
+        "e": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "3",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "2",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b4",
+          "input": "b3",
+          "kind": "power_sequence",
+          "parameters": {
+            "base": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b4",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}\\,a_{n}=2^{\\left(3\\right)\\left(\\left(2\\right)\\left(n\\right)+1\\right)}\\,\\left(a_{n+1}\\right)^{2}\\quad(n\\ge1)\\\\a_{1}=2\\quad a_{2}=16\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=2^{1+\\left(3\\right)\\left(n-1\\right)+\\left(3\\right)\\left(\\left(2\\right)\\left(\\binom{n}{3}\\right)+\\binom{n-1}{2}\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 15,
+      "parts": {
+        "B": 12,
+        "R": 2,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "対数と二重の階差を組み合わせる",
+      "operations": [
+        "logarithm",
+        "difference",
+        "difference_sum",
+        "evaluate_sum",
+        "difference_sum",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "対数をとり、階差を2回足し合わせる",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 1
+      }
+    }
+  },
+  {
+    "id": "1d1565d8043e7f7afa66f2bd37363056a1817d98e2a78d0185fd6042de2b6224",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "multiplicative_second",
+      "seed": "1",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "e": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "2",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "1",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            },
+            "profile_version": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b4",
+          "input": "b3",
+          "kind": "power_sequence",
+          "parameters": {
+            "base": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b4",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}\\,a_{n}=2^{\\left(1\\right)\\left(n\\right)}\\,\\left(a_{n+1}\\right)^{2}\\quad(n\\ge1)\\\\a_{1}=2\\quad a_{2}=8\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=2^{1+\\left(2\\right)\\left(n-1\\right)+\\left(1\\right)\\left(\\binom{n}{3}\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 15,
+      "parts": {
+        "B": 12,
+        "R": 2,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "対数と二重の階差を組み合わせる",
+      "operations": [
+        "logarithm",
+        "difference",
+        "difference_sum",
+        "evaluate_sum",
+        "difference_sum",
+        "evaluate_quadratic_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "対数をとり、階差を2回足し合わせる",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 1
+      }
+    }
+  },
+  {
+    "id": "5406352bd5ee6ba1898a75c7f1eb4ebd2a6faaab9f4144aca86b36de8822dc5d",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "multiplicative_second",
+      "seed": "7",
+      "parameters": {
+        "c": {
+          "num": "2",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "1"
+        },
+        "e": {
+          "num": "1",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "profile_version": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "constant",
+        "parameters": {
+          "initial": {
+            "num": "2",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "cumulative_sum",
+          "parameters": {
+            "initial": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b3",
+          "input": "b2",
+          "kind": "power_sequence",
+          "parameters": {
+            "base": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b3",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+2}\\,a_{n}=3^{\\left(2\\right)\\left(1\\right)}\\,\\left(a_{n+1}\\right)^{2}\\quad(n\\ge1)\\\\a_{1}=3\\quad a_{2}=9\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=3^{1+\\left(1\\right)\\left(n-1\\right)+\\left(2\\right)\\left(\\binom{n-1}{2}\\right)}\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 14,
+      "parts": {
+        "B": 11,
+        "R": 2,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "対数と二重の階差を組み合わせる",
+      "operations": [
+        "logarithm",
+        "difference",
+        "difference_sum",
+        "evaluate_sum",
+        "difference_sum",
+        "evaluate_sum"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "対数をとり、階差を2回足し合わせる",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 0,
+        "display_terms": 1,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "19d0d074e29a4ab7b6a3032474e8063410b13ab6ce58342ee52b6f611f5bf760",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_symmetric",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{9}{2}\\,a_{n}+\\frac{1}{2}\\,b_{n}\\\\b_{n+1}=\\frac{1}{2}\\,a_{n}+\\frac{9}{2}\\,b_{n}\\quad(n\\ge1)\\\\a_{1}=\\frac{5}{2}\\quad b_{1}=-\\frac{1}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+3\\,4^{n-1}\\right)\\\\b_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,4^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 7,
+      "parts": {
+        "B": 6,
+        "R": 1,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "連立を和・差や一次結合で分離する",
+      "operations": [
+        "split_pair",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "d943c12ba1dd7627bff2bf11d90f5c129e6f4fd0210cde270c79b587832f4137",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_weighted",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            },
+            "weight": {
+              "num": "3",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b1",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{9}{2}\\,a_{n}+\\frac{3}{2}\\,b_{n}\\\\b_{n+1}=\\frac{1}{6}\\,a_{n}+\\frac{9}{2}\\,b_{n}\\quad(n\\ge1)\\\\a_{1}=\\frac{5}{2}\\quad b_{1}=-\\frac{1}{6}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+3\\,4^{n-1}\\right)\\\\b_{n}=\\frac{1}{6}\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,4^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 10,
+      "parts": {
+        "B": 6,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "連立を和・差や一次結合で分離する",
+      "operations": [
+        "split_pair",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 8,
+        "fraction_depth": 1,
+        "display_terms": 2,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "181dfdd8f900f72f040d1b660c8b1c34701402562a49dceb3f682947af0934ef",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_scaled",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "2",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "2",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(2\\,n+1\\right)\\,a_{n+1}=\\left(2\\,\\left(n+1\\right)+1\\right)\\,\\left(\\frac{9}{2}\\,a_{n}+\\frac{1}{2}\\,b_{n}\\right)\\\\\\left(2\\,n+1\\right)\\,b_{n+1}=\\left(2\\,\\left(n+1\\right)+1\\right)\\,\\left(\\frac{1}{2}\\,a_{n}+\\frac{9}{2}\\,b_{n}\\right)\\quad(n\\ge1)\\\\a_{1}=\\frac{15}{2}\\quad b_{1}=-\\frac{3}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(2\\,n+1\\right)\\,\\left(2\\,5^{n-1}+3\\,4^{n-1}\\right)\\\\b_{n}=\\frac{1}{2}\\,\\left(2\\,n+1\\right)\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,4^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 15,
+      "parts": {
+        "B": 9,
+        "R": 2,
+        "A": 2,
+        "T": 1,
+        "P": 1,
+        "U": 0
+      },
+      "reason": "正規化してから連立を分離する",
+      "operations": [
+        "index_scale",
+        "split_pair",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 20,
+        "fraction_depth": 1,
+        "display_terms": 4,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "db8183bf0d2f0fb20392a93b28a3acee91b019263734a1ff4d80927b3ea8f6b9",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_scaled",
+      "seed": "2",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "7",
+          "den": "3"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "7",
+            "den": "3"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "1",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "3",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}n\\,a_{n+1}=\\left(n+1\\right)\\,\\left(4\\,a_{n}+b_{n}\\right)\\\\n\\,b_{n+1}=\\left(n+1\\right)\\,\\left(a_{n}+4\\,b_{n}\\right)\\quad(n\\ge1)\\\\a_{1}=\\frac{5}{3}\\quad b_{1}=\\frac{2}{3}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,n\\,\\left(\\frac{7}{3}\\,5^{n-1}+3^{n-1}\\right)\\\\b_{n}=\\frac{1}{2}\\,n\\,\\left(\\frac{7}{3}\\,5^{n-1}+\\left(-1\\right)\\,3^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 9,
+        "R": 2,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "正規化してから連立を分離する",
+      "operations": [
+        "index_scale",
+        "split_pair",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 10,
+        "fraction_depth": 0,
+        "display_terms": 2,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "394839eb3e2f0f8c44159c7f9361fd6d526d221096f84a4befa4deb6ef3fab5b",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_scaled",
+      "seed": "8",
+      "parameters": {
+        "c": {
+          "num": "1",
+          "den": "1"
+        },
+        "d": {
+          "num": "1",
+          "den": "2"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "3",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "1",
+            "den": "2"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "1",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "3",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "index_scale",
+          "parameters": {
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}\\left(n+1\\right)\\,a_{n+1}=\\left(n+1+1\\right)\\,\\left(4\\,a_{n}+b_{n}\\right)\\\\\\left(n+1\\right)\\,b_{n+1}=\\left(n+1+1\\right)\\,\\left(a_{n}+4\\,b_{n}\\right)\\quad(n\\ge1)\\\\a_{1}=\\frac{3}{2}\\quad b_{1}=-\\frac{1}{2}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(n+1\\right)\\,\\left(\\frac{1}{2}\\,5^{n-1}+3^{n-1}\\right)\\\\b_{n}=\\frac{1}{2}\\,\\left(n+1\\right)\\,\\left(\\frac{1}{2}\\,5^{n-1}+\\left(-1\\right)\\,3^{n-1}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 4,
+      "score": 14,
+      "total_score": 12,
+      "parts": {
+        "B": 9,
+        "R": 2,
+        "A": 0,
+        "T": 1,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "正規化してから連立を分離する",
+      "operations": [
+        "index_scale",
+        "split_pair",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 14,
+        "fraction_depth": 0,
+        "display_terms": 4,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "9ddc06cd0228eb887ce00dda700194d64ec9366f14ec004962ea25f8c2271ffb",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_forced",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "0",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "profile": {
+              "num": "0",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{9}{2}\\,a_{n}+\\frac{1}{2}\\,b_{n}-6\\\\b_{n+1}=\\frac{1}{2}\\,a_{n}+\\frac{9}{2}\\,b_{n}-6\\quad(n\\ge1)\\\\a_{1}=4\\quad b_{1}=1\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+3\\,4^{n-1}+3\\right)\\\\b_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,4^{n-1}+3\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 3,
+      "score": 9,
+      "total_score": 12,
+      "parts": {
+        "B": 10,
+        "R": 2,
+        "A": 0,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "連立を和・差や一次結合で分離する",
+      "operations": [
+        "split_pair",
+        "fixed_point",
+        "shift",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 0,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 9,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 0,
+        "exponent_degree": 0
+      }
+    }
+  },
+  {
+    "id": "518d02eca4cc83e42a295ac13610fd1b0879d8ead7cc75d7ebec85aed8d22be5",
+    "recipe": {
+      "schema_version": "1.0",
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "rng_version": "rand_chacha-0.3/ChaCha8Rng-v1",
+      "family": "coupled_forced",
+      "seed": "0",
+      "parameters": {
+        "c": {
+          "num": "3",
+          "den": "1"
+        },
+        "d": {
+          "num": "2",
+          "den": "1"
+        },
+        "profile": {
+          "num": "1",
+          "den": "1"
+        },
+        "r": {
+          "num": "5",
+          "den": "1"
+        },
+        "s": {
+          "num": "4",
+          "den": "1"
+        }
+      },
+      "core": {
+        "id": "core",
+        "kind": "geometric",
+        "parameters": {
+          "amplitude": {
+            "num": "2",
+            "den": "1"
+          },
+          "ratio": {
+            "num": "5",
+            "den": "1"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "id": "b1",
+          "input": "core",
+          "kind": "index_add",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "profile": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        },
+        {
+          "id": "b2",
+          "input": "b1",
+          "kind": "pair_mix",
+          "parameters": {
+            "amplitude": {
+              "num": "3",
+              "den": "1"
+            },
+            "ratio": {
+              "num": "4",
+              "den": "1"
+            },
+            "weight": {
+              "num": "1",
+              "den": "1"
+            }
+          }
+        }
+      ],
+      "output": "b2",
+      "index_start": 1
+    },
+    "statement_latex": "\\begin{gathered}a_{n+1}=\\frac{9}{2}\\,a_{n}+\\frac{1}{2}\\,b_{n}+6\\,n\\\\b_{n+1}=\\frac{1}{2}\\,a_{n}+\\frac{9}{2}\\,b_{n}+6\\,n\\quad(n\\ge1)\\\\a_{1}=\\frac{5}{8}\\quad b_{1}=-\\frac{19}{8}\\end{gathered}",
+    "answer_latex": "\\begin{gathered}a_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,n+3\\,4^{n-1}-\\frac{3}{4}\\right)\\\\b_{n}=\\frac{1}{2}\\,\\left(2\\,5^{n-1}+\\left(-3\\right)\\,n+\\left(-3\\right)\\,4^{n-1}-\\frac{3}{4}\\right)\\end{gathered}\\quad(n\\ge1)",
+    "classification": {
+      "level": 5,
+      "score": 20,
+      "total_score": 14,
+      "parts": {
+        "B": 10,
+        "R": 2,
+        "A": 2,
+        "T": 0,
+        "P": 0,
+        "U": 0
+      },
+      "reason": "連立の分離と一次式の特解を組み合わせる",
+      "operations": [
+        "split_pair",
+        "polynomial_shift",
+        "geometric",
+        "recover_pair"
+      ],
+      "numeric_cost": 2,
+      "rules_version": "rust-registered-1.1/reference-0.7.0",
+      "method_name": "一次結合で連立を分離する",
+      "metrics": {
+        "nodes": 11,
+        "fraction_depth": 1,
+        "display_terms": 3,
+        "coefficient_degree": 1,
+        "exponent_degree": 0
+      }
+    }
+  }
+]

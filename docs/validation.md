@@ -1,5 +1,28 @@
 # 検証結果
 
+## v0.3.0のブラウザー単独版
+
+Rust/WebAssemblyのリリースビルドと厳密計算APIのテストが成功しました。ネイティブ版とブラウザー機能を合わせた通常テスト30件、rustfmt、全ターゲットの厳格なclippy、WASMターゲットの依存分離を確認しています。Recipeのseedは数値・文字列の両形式を受け付け、ブラウザー版とLean版の間でも精度を保って受け渡せます。
+
+単一HTMLをChromiumで読み込み、ブラウザーをオフラインにして28系統を生成し、参照版と照合済みの75構成を再現しました。問題ID・問題式・一般項・教育スコアがネイティブ版と一致しました。ヒントと解答の独立開閉、解答開閉に応じたTeX保存、Recipe保存・再現、64ビットseedの精度、改変拒否、中止、幅1440px・390pxを確認しました。演習中のHTTP要求とJavaScript例外は0件でした。
+
+この実行環境ではChromiumの管理ポリシーが`file://`への移動を禁止しているため、許可されたループバックの静的配信でHTMLを読み込んだ後、生成前に通信を無効にしました。生成APIやRustサーバーは使用していません。直接のファイル起動はこの環境では未実測です。GitHub Actionsには、配布HTMLを`file://`から直接開く検査を追加しています。
+
+ブラウザーでの数学的な確認は、一般項の初期条件とn=1〜20の漸化式・定義域条件の厳密計算です。全添字の形式証明は実行しません。生成時にLeanの証明済み表示を使わず、以下の従来版のLean検証実績と区別します。実行概要は[browser-validation.json](browser-validation.json)に保存しています。
+
+再実行例:
+
+```bash
+cargo test --locked --features browser
+cargo clippy --locked --all-targets --features browser -- -D warnings
+python3 scripts/build-browser.py
+npm run test:offline
+```
+
+管理ポリシーでファイル起動が禁止される開発環境では`RECURRENCE_TEST_STATIC_PREVIEW=1 npm run test:offline`を使用します。開発と配布手順は[ブラウザー版の説明](browser.md)を参照してください。
+
+## v0.2.0のRust＋Lean版の検証実績
+
 検証日：2026年10月9日（日本時間）。アプリ版0.2.0、Lean 4.19.0、固定したmathlibと共通定理を使用しました。
 
 ## 実施した確認

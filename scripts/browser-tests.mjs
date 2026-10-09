@@ -5,7 +5,7 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE_PATH || "playwri
 const base = (process.env.RECURRENCE_TEST_URL || "http://127.0.0.1:3210").replace(/\/$/, "");
 const ready = await (await fetch(`${base}/api/status`)).json();
 assert.equal(ready.ready, true, "Prepare Lean before browser verification");
-assert.equal(ready.application_version, "0.2.0", "Expanded UI checks require the rebuilt 0.2 application");
+assert.equal(ready.application_version, "0.3.0", "UI checks require the rebuilt 0.3 application");
 assert.equal(ready.families.length, 28, "All 28 reference families must be available");
 assert.equal(ready.active_job, null, "Run UI verification separately from benchmarks");
 const browser = await chromium.launch({

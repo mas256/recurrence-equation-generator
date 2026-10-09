@@ -1,0 +1,29 @@
+{
+  "application_version": "0.3.0",
+  "standalone_file": true,
+  "file_navigation_tested": false,
+  "load_method": "loopback static file then browser network disabled",
+  "offline": true,
+  "http_requests_during_exercises": 0,
+  "generated_families": 28,
+  "replayed_profiles": 75,
+  "numeric_u64_recipe": "preserved",
+  "UI": [
+    "generation",
+    "hints",
+    "answer",
+    "TeX",
+    "Recipe",
+    "replay",
+    "paired equations",
+    "390px",
+    "1440px"
+  ],
+  "invalid_recipe": "rejected",
+  "cancellation": "worker terminated",
+  "formal_verification": false,
+  "javascript_errors": [],
+  "rust_regular_tests": 30,
+  "native_ui_regression": "passed",
+  "file_navigation_limitation": "Managed Chromium policy rejects file://; GitHub Actions adds direct file navigation test."
+}

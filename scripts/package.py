@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 import stat
+import tomllib
 import zipfile
 
 root = Path(__file__).resolve().parent.parent
@@ -10,9 +11,9 @@ out = root / "dist"
 out.mkdir(exist_ok=True)
 files = [root / name for name in (
     ".gitignore", "Cargo.toml", "Cargo.lock", "build.rs", "README.md",
-    "package.json", "package-lock.json",
+    "package.json", "package-lock.json", "index.html",
 )]
-for directory in ("src", "tests", "examples", "scripts", "web", "docs"):
+for directory in ("src", "tests", "examples", "scripts", "web", "docs", "browser", ".github"):
     files.extend(p for p in (root / directory).rglob("*")
                  if p.is_file() and not any(part == "__pycache__" for part in p.parts)
                  and p.suffix != ".log")
@@ -20,7 +21,7 @@ files.extend(root / "lean" / name for name in (
     "lean-toolchain", "lakefile.toml", "lake-manifest.json", "Recurrence.lean",
     "Recurrence/Theory.lean", "Audit.lean",
 ))
-manifest = {"version": "0.2.0", "artifacts": []}
+manifest = {"version": tomllib.loads((root / "Cargo.toml").read_text())["package"]["version"], "artifacts": []}
 for binary in (False, True):
     name = "recurrence-lab-linux-x86_64.zip" if binary else "recurrence-lab-source.zip"
     selected = [(p, "recurrence-lab/" + p.relative_to(root).as_posix()) for p in sorted(set(files))]

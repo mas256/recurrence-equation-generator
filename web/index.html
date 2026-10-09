@@ -4,23 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#183c38">
-  <meta name="description" content="あなたのPCで漸化式を動的に生成し、Leanで検証する学習アプリ。">
+  <meta name="description" content="漸化式を動的に生成する学習アプリ。難易度を選び、ヒントと解答で理解を深められます。">
   <title>漸化式ラボ — 一問から、理解を深める。</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/vendor/katex.min.css">
-  <link rel="stylesheet" href="/style.css">
-  <script defer src="/vendor/katex.min.js"></script>
-  <script defer src="/vendor/auto-render.min.js"></script>
-  <script defer src="/app.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./vendor/katex.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./vendor/katex.min.js"></script>
+  <script defer src="./vendor/auto-render.min.js"></script>
+  <script defer src="./browser-runtime.js"></script>
+  <script defer src="./app.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/" aria-label="漸化式ラボ ホーム">
+      <a class="brand" href="./index.html" aria-label="漸化式ラボ ホーム">
         <span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span>
         <span>漸化式ラボ<span class="brand-en">RECURRENCE LAB</span></span>
       </a>
-      <div class="header-right"><span class="local-chip"><span class="status-dot"></span>ローカル実行</span><span class="edition">Rust × Lean</span></div>
+      <div class="header-right"><span class="local-chip"><span class="status-dot"></span><span id="deployment-label">準備確認中</span></span><span id="runtime-edition" class="edition">漸化式演習</span></div>
     </div>
   </header>
   <main class="page-shell">
@@ -44,10 +45,10 @@
           <div class="family-field"><label for="family">出題の型 <span>任意</span></label><div class="select-wrap"><select id="family"><option value="mixed">総合演習（おまかせ）</option></select><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg></div><p id="family-help" class="field-help">解法の型は、解答を開くまでお楽しみに。</p></div>
           <button id="generate" type="button" class="generate-button" disabled><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>新しい問題をつくる</span><span class="button-arrow" aria-hidden="true">→</span></button>
           <div id="job-progress" class="job-progress" hidden aria-live="polite"><div class="progress-heading"><span class="spinner" aria-hidden="true"></span><strong id="job-phase">候補を作成中</strong><span id="elapsed">0.0 秒</span></div><div class="progress-track"><span></span></div><p id="job-message">条件に合う問題を探しています。</p><button id="cancel" class="cancel-button" type="button">生成を中止する</button></div>
-          <p class="generation-note"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m8 1.5 5 2v4.2c0 3-5 6.8-5 6.8S3 10.7 3 7.7V3.5l5-2Z" stroke="currentColor"/><path d="m5.5 7.5 1.7 1.7 3.3-3.4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>Leanで検証できた一問を出題します。</p>
+          <p class="generation-note"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m8 1.5 5 2v4.2c0 3-5 6.8-5 6.8S3 10.7 3 7.7V3.5l5-2Z" stroke="currentColor"/><path d="m5.5 7.5 1.7 1.7 3.3-3.4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="generation-note-text">その場で生成した一問を出題します。</span></p>
         </section>
-        <section class="environment-card" aria-labelledby="environment-title"><div class="environment-heading"><div><span class="environment-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 17h6M10 13v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><h2 id="environment-title">実行環境</h2></div><span id="environment-badge" class="environment-badge checking">確認中</span></div><p id="environment-message">Leanの準備状況を確認しています。</p><details id="environment-details"><summary><span>準備と環境の詳細</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg></summary><div class="environment-detail-body"><dl id="environment-metadata"></dl><div id="setup-help" hidden><p>初回のみ、アプリのフォルダーで次のコマンドを実行してください。</p><code id="setup-command">./scripts/setup-lean.sh</code><p>Leanと共通モジュールを準備します。初回準備にはインターネット接続が必要です。</p></div><button id="refresh-status" type="button" class="text-button">準備状況を再確認 <span aria-hidden="true">↻</span></button></div></details></section>
-        <div class="sidebar-footnote"><span class="tiny-line"></span><p>生成も検証も、このPCで。<br>初回準備後はオフラインで使えます。</p></div>
+        <section class="environment-card" aria-labelledby="environment-title"><div class="environment-heading"><div><span class="environment-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 17h6M10 13v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><h2 id="environment-title">実行環境</h2></div><span id="environment-badge" class="environment-badge checking">確認中</span></div><p id="environment-message">演習の準備状況を確認しています。</p><details id="environment-details"><summary><span>準備と環境の詳細</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg></summary><div class="environment-detail-body"><dl id="environment-metadata"></dl><div id="setup-help" hidden><p>初回のみ、アプリのフォルダーで次のコマンドを実行してください。</p><code id="setup-command">./scripts/setup-lean.sh</code><p>Leanと共通モジュールを準備します。初回準備にはインターネット接続が必要です。</p></div><button id="refresh-status" type="button" class="text-button">準備状況を再確認 <span aria-hidden="true">↻</span></button></div></details></section>
+        <div class="sidebar-footnote"><span class="tiny-line"></span><p id="deployment-footnote">演習の準備を確認しています。</p></div>
       </aside>
 
       <section class="practice-column" aria-labelledby="practice-title">
@@ -56,19 +57,19 @@
         <article class="problem-paper">
           <div id="empty-state" class="empty-state"><div class="paper-corner" aria-hidden="true"></div><div class="empty-sequence" aria-hidden="true"><span>a<sub>1</sub></span><i></i><span>a<sub>2</sub></span><i></i><span>a<sub>3</sub></span></div><span class="empty-eyebrow">A LITTLE CHALLENGE, EVERY DAY</span><h3>最初の一問を、ここから。</h3><p>難易度と型を選んで、問題をつくりましょう。<br>考える時間も、答えをたしかめる時間も、あなたのペースで。</p><div class="empty-callout"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M15 10H5m4-4-4 4 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>左の「新しい問題をつくる」からはじめる</span></div></div>
           <div id="problem-content" hidden>
-            <div class="problem-topline"><div class="problem-tags"><span id="problem-level" class="level-tag">Lv. 1</span><span id="problem-family" class="family-tag" hidden></span></div><span class="verified-badge"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m8 1.5 5 2v4.2c0 3-5 6.8-5 6.8S3 10.7 3 7.7V3.5l5-2Z" stroke="currentColor"/><path d="m5.5 7.5 1.7 1.7 3.3-3.4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>Lean 検証済み</span></div>
+            <div class="problem-topline"><div class="problem-tags"><span id="problem-level" class="level-tag">Lv. 1</span><span id="problem-family" class="family-tag" hidden></span></div><span class="verified-badge"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m8 1.5 5 2v4.2c0 3-5 6.8-5 6.8S3 10.7 3 7.7V3.5l5-2Z" stroke="currentColor"/><path d="m5.5 7.5 1.7 1.7 3.3-3.4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="verification-label">確認済み</span></span></div>
             <div class="problem-question"><p class="question-label">PROBLEM</p><h3>次の条件を満たす数列の一般項を求めよ。</h3><div id="statement" class="statement-math math-content"></div><p id="problem-conditions" class="problem-conditions"></p></div>
             <div class="learning-accordions"><details id="hint-panel" class="learning-panel"><summary><span class="summary-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6.8 13a5 5 0 1 1 6.4 0c-.8.6-1.2 1.1-1.2 2h-4c0-.9-.4-1.4-1.2-2Z" stroke="currentColor" stroke-width="1.4"/><path d="M8 18h4M8 15h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span>考え方のヒント<small>解法の入口を見つける</small></span><span class="accordion-plus" aria-hidden="true"></span></summary><div id="hint-content" class="learning-content math-content"></div></details>
             <details id="solution-panel" class="learning-panel"><summary><span class="summary-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M10 5c-2-1.5-4-2-7-1v12c3-1 5-.5 7 1 2-1.5 4-2 7-1V4c-3-1-5-.5-7 1Zm0 0v12" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><span>解答をたしかめる<small>式変形を一歩ずつ</small></span><span class="accordion-plus" aria-hidden="true"></span></summary><div id="solution-content" class="learning-content math-content"></div></details></div>
             <div class="problem-toolbar"><span id="save-description">問題のみを保存</span><a id="download-tex" class="download-button" href="#" download><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m-3-3 3 3 3-3M4 12v4h12v-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>TeXを保存</a></div>
           </div>
         </article>
-        <details id="verification-panel" class="verification-panel" hidden><summary><span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor"/><path d="M8 7v4M8 5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>検証と出題の記録</span><span class="detail-summary-end">再現用Recipe・検証情報 <span class="chevron" aria-hidden="true">⌄</span></span></summary><div class="verification-body"><dl id="verification-metadata"></dl><div class="recipe-actions"><a id="download-recipe" class="text-button" href="#" download>Recipeを保存 <span aria-hidden="true">↓</span></a><button id="load-recipe" class="text-button" type="button">Recipeから再現 <span aria-hidden="true">↥</span></button></div><p class="verification-explanation">検証は初期条件・漸化式・一般項・一意性を対象とします。難易度は学習の目安です。</p></div></details>
+        <details id="verification-panel" class="verification-panel" hidden><summary><span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor"/><path d="M8 7v4M8 5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>検証と出題の記録</span><span class="detail-summary-end">再現用Recipe・検証情報 <span class="chevron" aria-hidden="true">⌄</span></span></summary><div class="verification-body"><dl id="verification-metadata"></dl><div class="recipe-actions"><a id="download-recipe" class="text-button" href="#" download>Recipeを保存 <span aria-hidden="true">↓</span></a><button id="load-recipe" class="text-button" type="button">Recipeから再現 <span aria-hidden="true">↥</span></button></div><p id="verification-explanation" class="verification-explanation">検証は初期条件・漸化式・一般項・一意性を対象とします。難易度は学習の目安です。</p></div></details>
         <section class="study-guide" aria-label="演習の進め方"><div class="guide-item"><span>01</span><div><h3>まず、自分で考える</h3><p>数列の変化に注目しよう。</p></div></div><div class="guide-item"><span>02</span><div><h3>ヒントを手がかりに</h3><p>少しの気づきが、次の一歩に。</p></div></div><div class="guide-item"><span>03</span><div><h3>解答で理解をつなぐ</h3><p>一般項までの道筋をたしかめる。</p></div></div></section>
       </section>
     </div>
     <section class="recipe-import"><button id="import-recipe-global" class="text-button" type="button">保存したRecipeから問題を再現</button><input id="recipe-file" type="file" accept=".json,application/json" hidden></section>
   </main>
-  <footer class="site-footer"><span>漸化式ラボ</span><p>学ぶ楽しさを、次の一項へ。</p><span class="footer-version">LOCAL EDITION / 01</span></footer>
+  <footer class="site-footer"><span>漸化式ラボ</span><p>学ぶ楽しさを、次の一項へ。</p><span id="deployment-edition" class="footer-version">EDITION / 03</span></footer>
 </body>
 </html>

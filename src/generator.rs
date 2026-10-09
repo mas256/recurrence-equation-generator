@@ -3,7 +3,7 @@ use crate::math::{Equation, Expr, NatExpr, Rational};
 use num_traits::{Signed, ToPrimitive};
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -62,12 +62,37 @@ pub struct Recipe {
     pub rules_version: String,
     pub rng_version: String,
     pub family: String,
+    #[serde(deserialize_with = "deserialize_recipe_seed")]
     pub seed: u64,
     pub parameters: BTreeMap<String, Rational>,
     pub core: RecipeCore,
     pub blocks: Vec<RecipeBlock>,
     pub output: String,
     pub index_start: u32,
+}
+// Browser files store seed as decimal text to preserve every u64 digit in
+// JavaScript. Native serialization remains numeric for existing Recipe files.
+fn deserialize_recipe_seed<'de, D: Deserializer<'de>>(deserializer: D) -> Result<u64, D::Error> {
+    struct SeedVisitor;
+    impl<'de> serde::de::Visitor<'de> for SeedVisitor {
+        type Value = u64;
+        fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            formatter.write_str("a u64 integer or decimal u64 string")
+        }
+        fn visit_u64<E: serde::de::Error>(self, value: u64) -> Result<u64, E> {
+            Ok(value)
+        }
+        fn visit_i64<E: serde::de::Error>(self, value: i64) -> Result<u64, E> {
+            u64::try_from(value).map_err(E::custom)
+        }
+        fn visit_str<E: serde::de::Error>(self, value: &str) -> Result<u64, E> {
+            if value.is_empty() || value.len() > 20 || !value.bytes().all(|c| c.is_ascii_digit()) {
+                return Err(E::custom("seed must be a decimal u64 integer"));
+            }
+            value.parse::<u64>().map_err(E::custom)
+        }
+    }
+    deserializer.deserialize_any(SeedVisitor)
 }
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -1548,6 +1573,44 @@ mod tests {
         altered = generated.recipe.clone();
         altered.seed += 1;
         assert_eq!(replay(&altered).unwrap().id, generated.id);
+    }
+    #[test]
+    fn browser_and_native_recipe_seeds_preserve_u64_and_content_identity() {
+        for seed in [0, 9_007_199_254_740_992, u64::MAX] {
+            let generated = generate(1, Some("arithmetic"), seed).unwrap();
+            let native = serde_json::to_value(&generated.recipe).unwrap();
+            assert_eq!(native["seed"].as_u64(), Some(seed));
+            let numeric: Recipe = serde_json::from_value(native.clone()).unwrap();
+            let mut browser = native.clone();
+            browser["seed"] = seed.to_string().into();
+            let text: Recipe = serde_json::from_value(browser).unwrap();
+            assert_eq!(numeric, text);
+            assert_eq!(text, generated.recipe);
+            assert_eq!(serde_json::to_value(&text).unwrap(), native);
+            assert_eq!(text.schema_version, SCHEMA_VERSION);
+            assert_eq!(replay(&text).unwrap().id, generated.id);
+            assert_eq!(replay(&text).unwrap().problem, generated.problem);
+        }
+        let template =
+            serde_json::to_value(generate(1, Some("arithmetic"), 0).unwrap().recipe).unwrap();
+        for seed in [
+            serde_json::json!(-1),
+            serde_json::json!(1.0),
+            serde_json::json!(1.5),
+            serde_json::json!("-1"),
+            serde_json::json!("1.0"),
+            serde_json::json!(""),
+            serde_json::json!(" 1"),
+            serde_json::json!("18446744073709551616"),
+        ] {
+            let mut invalid = template.clone();
+            invalid["seed"] = seed;
+            assert!(serde_json::from_value::<Recipe>(invalid).is_err());
+        }
+        let overflow = serde_json::to_string(&template)
+            .unwrap()
+            .replace("\"seed\":0", "\"seed\":18446744073709551616");
+        assert!(serde_json::from_str::<Recipe>(&overflow).is_err());
     }
     #[test]
     fn forward_classification_does_not_read_general_term() {
