@@ -1,8 +1,8 @@
 {
   "application_version": "0.3.0",
   "standalone_file": true,
-  "file_navigation_tested": false,
-  "load_method": "loopback static file then browser network disabled",
+  "file_navigation_tested": true,
+  "load_method": "GitHub Actions: file:// directly, browser offline; local managed environment: static file then offline",
   "offline": true,
   "http_requests_during_exercises": 0,
   "generated_families": 28,
@@ -25,5 +25,11 @@
   "javascript_errors": [],
   "rust_regular_tests": 30,
   "native_ui_regression": "passed",
-  "file_navigation_limitation": "Managed Chromium policy rejects file://; GitHub Actions adds direct file navigation test."
+  "ci_url": "https://github.com/mas256/recurrence-equation-generator/actions/runs/37867430564",
+  "verified_source_commit": "71bf801a217f7a67a6a3881e2fc75fcf97b2b368",
+  "ci_jobs": {
+    "browser": "success",
+    "rust_checks": "success"
+  },
+  "browser_to_native_lean_recipe": "string u64MAX seed accepted; unchanged content ID; all four Lean theorems passed"
 }
