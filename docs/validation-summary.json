@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "lean_version": "4.19.0",
+  "normal_tests": 24,
+  "clippy": "all-targets -D warnings passed",
+  "universal_family_proofs": 28,
+  "registered_profiles": 75,
+  "reference_cases": 750,
+  "reference_quality_checked": true,
+  "browser_checks": "paired equations/answers, sum boundaries, binomial/log, TeX privacy, cancellation, replay, offline, desktop1440/mobile390 passed",
+  "power_proof_regressions": "unit amplitude and rational amplitudes1,3/2,8/5, three profiles; seeded cases verified",
+  "limits": "See implementation-status.md; all reference profiles and native macOS/Windows not included",
+  "benchmark_successes": 82,
+  "benchmark_failures": 0,
+  "mixed_request_median_ms": 2150
+}

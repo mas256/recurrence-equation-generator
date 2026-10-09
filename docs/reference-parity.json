@@ -1,0 +1,4510 @@
+{
+  "reference_version": "0.7.0",
+  "reference_commit": "a21c3d0711ebb08d0516e646f32ee3cab7b2c7de",
+  "case_count": 750,
+  "family_count": 28,
+  "cases": [
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "arithmetic",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "geometric",
+      "reference_profile": "none",
+      "level": 1,
+      "score": 2
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "scaled_constant",
+      "reference_profile": "n",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "factorial_ratio",
+      "reference_profile": "monomial",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "second_order",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_affine",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "weighted_sum",
+      "reference_profile": "distinct:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "affine",
+      "reference_profile": "none",
+      "level": 2,
+      "score": 5
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n",
+      "level": 3,
+      "score": 10
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "shifted_scaled",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:gap_2",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_squared",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:consecutive",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_affine",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:gap_2",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_squared",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:consecutive",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_scaled",
+      "reference_profile": "inverse:n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "polynomial_forcing",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 8
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "reciprocal_forcing",
+      "reference_profile": "none",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "odd",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "gap_2",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_plus_1",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "consecutive",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n",
+      "level": 1,
+      "score": 3
+    },
+    {
+      "family": "polynomial_difference",
+      "reference_profile": "n_squared",
+      "level": 2,
+      "score": 4
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "mobius",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "scaled_second_order",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "difference_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "forced_second",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "arithmetic_difference",
+      "reference_profile": "none",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "pure_sum_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "constant",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "sum_relation",
+      "reference_profile": "linear",
+      "level": 2,
+      "score": 6
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "tetrahedral",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "triangular",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "ratio_power",
+      "reference_profile": "square_minus_one",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "odd",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "multiplicative_second",
+      "reference_profile": "constant",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_symmetric",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_weighted",
+      "reference_profile": "none",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "odd",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_scaled",
+      "reference_profile": "n_plus_1",
+      "level": 4,
+      "score": 14
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "constant",
+      "level": 3,
+      "score": 9
+    },
+    {
+      "family": "coupled_forced",
+      "reference_profile": "n",
+      "level": 5,
+      "score": 20
+    }
+  ],
+  "registered_profile_count": 75,
+  "quality_checked": true
+}

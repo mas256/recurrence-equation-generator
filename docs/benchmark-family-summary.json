@@ -1,0 +1,437 @@
+{
+  "attempts": 32,
+  "states": {
+    "succeeded": 32
+  },
+  "successful_request_times": {
+    "count": 32,
+    "median_ms": 2146.5,
+    "p95_ms": 2705,
+    "max_ms": 2940
+  },
+  "successful_lean_times": {
+    "count": 32,
+    "median_ms": 1924,
+    "p95_ms": 2574,
+    "max_ms": 2747
+  },
+  "explicit_family_levels": [
+    {
+      "family": "affine",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "arithmetic",
+      "level": 1,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "arithmetic_difference",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "coupled_forced",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "coupled_forced",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "coupled_scaled",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "coupled_symmetric",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "coupled_weighted",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "difference_scaled",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "factorial_ratio",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "forced_second",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "geometric",
+      "level": 1,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "mobius",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "multiplicative_second",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "polynomial_difference",
+      "level": 1,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "polynomial_difference",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "polynomial_forcing",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "pure_sum",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "pure_sum_scaled",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "ratio_power",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "ratio_power",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "reciprocal_affine",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "reciprocal_forcing",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "reciprocal_scaled",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "scaled_affine",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "scaled_constant",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "scaled_second_order",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "second_order",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "shifted_scaled",
+      "level": 3,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "shifted_scaled",
+      "level": 4,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "sum_relation",
+      "level": 2,
+      "attempts": 1,
+      "successful": 1
+    },
+    {
+      "family": "weighted_sum",
+      "level": 5,
+      "attempts": 1,
+      "successful": 1
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "attempts": 3,
+      "successful": 3,
+      "request_times": {
+        "count": 3,
+        "median_ms": 1626,
+        "p95_ms": 1882,
+        "max_ms": 1882
+      },
+      "lean_times": {
+        "count": 3,
+        "median_ms": 1570,
+        "p95_ms": 1817,
+        "max_ms": 1817
+      },
+      "families": [
+        {
+          "family": "arithmetic",
+          "count": 1
+        },
+        {
+          "family": "geometric",
+          "count": 1
+        },
+        {
+          "family": "polynomial_difference",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "attempts": 6,
+      "successful": 6,
+      "request_times": {
+        "count": 6,
+        "median_ms": 1877,
+        "p95_ms": 2150,
+        "max_ms": 2150
+      },
+      "lean_times": {
+        "count": 6,
+        "median_ms": 1715.5,
+        "p95_ms": 1934,
+        "max_ms": 1934
+      },
+      "families": [
+        {
+          "family": "affine",
+          "count": 1
+        },
+        {
+          "family": "factorial_ratio",
+          "count": 1
+        },
+        {
+          "family": "polynomial_difference",
+          "count": 1
+        },
+        {
+          "family": "pure_sum",
+          "count": 1
+        },
+        {
+          "family": "scaled_constant",
+          "count": 1
+        },
+        {
+          "family": "sum_relation",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "attempts": 7,
+      "successful": 7,
+      "request_times": {
+        "count": 7,
+        "median_ms": 2416,
+        "p95_ms": 2940,
+        "max_ms": 2940
+      },
+      "lean_times": {
+        "count": 7,
+        "median_ms": 2337,
+        "p95_ms": 2747,
+        "max_ms": 2747
+      },
+      "families": [
+        {
+          "family": "coupled_forced",
+          "count": 1
+        },
+        {
+          "family": "coupled_symmetric",
+          "count": 1
+        },
+        {
+          "family": "coupled_weighted",
+          "count": 1
+        },
+        {
+          "family": "polynomial_forcing",
+          "count": 1
+        },
+        {
+          "family": "ratio_power",
+          "count": 1
+        },
+        {
+          "family": "second_order",
+          "count": 1
+        },
+        {
+          "family": "shifted_scaled",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "attempts": 9,
+      "successful": 9,
+      "request_times": {
+        "count": 9,
+        "median_ms": 2167,
+        "p95_ms": 2686,
+        "max_ms": 2686
+      },
+      "lean_times": {
+        "count": 9,
+        "median_ms": 2013,
+        "p95_ms": 2555,
+        "max_ms": 2555
+      },
+      "families": [
+        {
+          "family": "arithmetic_difference",
+          "count": 1
+        },
+        {
+          "family": "coupled_scaled",
+          "count": 1
+        },
+        {
+          "family": "forced_second",
+          "count": 1
+        },
+        {
+          "family": "mobius",
+          "count": 1
+        },
+        {
+          "family": "ratio_power",
+          "count": 1
+        },
+        {
+          "family": "reciprocal_affine",
+          "count": 1
+        },
+        {
+          "family": "scaled_affine",
+          "count": 1
+        },
+        {
+          "family": "scaled_second_order",
+          "count": 1
+        },
+        {
+          "family": "shifted_scaled",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "attempts": 7,
+      "successful": 7,
+      "request_times": {
+        "count": 7,
+        "median_ms": 2180,
+        "p95_ms": 2705,
+        "max_ms": 2705
+      },
+      "lean_times": {
+        "count": 7,
+        "median_ms": 2147,
+        "p95_ms": 2574,
+        "max_ms": 2574
+      },
+      "families": [
+        {
+          "family": "coupled_forced",
+          "count": 1
+        },
+        {
+          "family": "difference_scaled",
+          "count": 1
+        },
+        {
+          "family": "multiplicative_second",
+          "count": 1
+        },
+        {
+          "family": "pure_sum_scaled",
+          "count": 1
+        },
+        {
+          "family": "reciprocal_forcing",
+          "count": 1
+        },
+        {
+          "family": "reciprocal_scaled",
+          "count": 1
+        },
+        {
+          "family": "weighted_sum",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

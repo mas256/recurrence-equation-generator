@@ -1,0 +1,220 @@
+{
+  "attempts": 50,
+  "states": {
+    "succeeded": 50
+  },
+  "successful_request_times": {
+    "count": 50,
+    "median_ms": 2150,
+    "p95_ms": 2666,
+    "max_ms": 2954
+  },
+  "successful_lean_times": {
+    "count": 50,
+    "median_ms": 1931.5,
+    "p95_ms": 2534,
+    "max_ms": 2774
+  },
+  "explicit_family_levels": [],
+  "levels": [
+    {
+      "level": 1,
+      "attempts": 10,
+      "successful": 10,
+      "request_times": {
+        "count": 10,
+        "median_ms": 1883.5,
+        "p95_ms": 2211,
+        "max_ms": 2211
+      },
+      "lean_times": {
+        "count": 10,
+        "median_ms": 1730,
+        "p95_ms": 2040,
+        "max_ms": 2040
+      },
+      "families": [
+        {
+          "family": "arithmetic",
+          "count": 2
+        },
+        {
+          "family": "geometric",
+          "count": 4
+        },
+        {
+          "family": "polynomial_difference",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "attempts": 10,
+      "successful": 10,
+      "request_times": {
+        "count": 10,
+        "median_ms": 2172,
+        "p95_ms": 2202,
+        "max_ms": 2202
+      },
+      "lean_times": {
+        "count": 10,
+        "median_ms": 1903.5,
+        "p95_ms": 2075,
+        "max_ms": 2075
+      },
+      "families": [
+        {
+          "family": "affine",
+          "count": 1
+        },
+        {
+          "family": "factorial_ratio",
+          "count": 1
+        },
+        {
+          "family": "polynomial_difference",
+          "count": 1
+        },
+        {
+          "family": "pure_sum",
+          "count": 3
+        },
+        {
+          "family": "scaled_constant",
+          "count": 1
+        },
+        {
+          "family": "sum_relation",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "attempts": 10,
+      "successful": 10,
+      "request_times": {
+        "count": 10,
+        "median_ms": 2167,
+        "p95_ms": 2698,
+        "max_ms": 2698
+      },
+      "lean_times": {
+        "count": 10,
+        "median_ms": 1979,
+        "p95_ms": 2534,
+        "max_ms": 2534
+      },
+      "families": [
+        {
+          "family": "coupled_forced",
+          "count": 2
+        },
+        {
+          "family": "coupled_weighted",
+          "count": 1
+        },
+        {
+          "family": "polynomial_forcing",
+          "count": 2
+        },
+        {
+          "family": "ratio_power",
+          "count": 2
+        },
+        {
+          "family": "second_order",
+          "count": 2
+        },
+        {
+          "family": "shifted_scaled",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "attempts": 10,
+      "successful": 10,
+      "request_times": {
+        "count": 10,
+        "median_ms": 2148,
+        "p95_ms": 2954,
+        "max_ms": 2954
+      },
+      "lean_times": {
+        "count": 10,
+        "median_ms": 1989,
+        "p95_ms": 2774,
+        "max_ms": 2774
+      },
+      "families": [
+        {
+          "family": "arithmetic_difference",
+          "count": 2
+        },
+        {
+          "family": "forced_second",
+          "count": 2
+        },
+        {
+          "family": "ratio_power",
+          "count": 2
+        },
+        {
+          "family": "scaled_affine",
+          "count": 2
+        },
+        {
+          "family": "scaled_second_order",
+          "count": 1
+        },
+        {
+          "family": "shifted_scaled",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "attempts": 10,
+      "successful": 10,
+      "request_times": {
+        "count": 10,
+        "median_ms": 2186.5,
+        "p95_ms": 2666,
+        "max_ms": 2666
+      },
+      "lean_times": {
+        "count": 10,
+        "median_ms": 2091.5,
+        "p95_ms": 2551,
+        "max_ms": 2551
+      },
+      "families": [
+        {
+          "family": "coupled_forced",
+          "count": 1
+        },
+        {
+          "family": "difference_scaled",
+          "count": 1
+        },
+        {
+          "family": "multiplicative_second",
+          "count": 1
+        },
+        {
+          "family": "reciprocal_forcing",
+          "count": 2
+        },
+        {
+          "family": "reciprocal_scaled",
+          "count": 5
+        }
+      ]
+    }
+  ]
+}

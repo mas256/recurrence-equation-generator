@@ -1,0 +1,13 @@
+/target/
+/data/
+/lean/.lake/
+/lean/generated/
+/lean/.verified-build
+/lean/.prepared*
+/lean/.cache-download.log
+/node_modules/
+/test-results/
+/dist/
+/benchmark-*/
+*.log
+

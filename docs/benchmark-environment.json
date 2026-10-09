@@ -1,0 +1,234 @@
+{
+  "started_at_utc": "2026-10-09T00:07:44Z",
+  "url": "http://127.0.0.1:3210",
+  "scope": "levels",
+  "samples_per_case": 10,
+  "seed_base": 20261009,
+  "environment": {
+    "os": "Linux 6.18.44 x86_64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "memory_kib": "10207516",
+    "filesystem": "overlay        overlay    32978704 5809492  25475108      19% /"
+  },
+  "readiness": {
+    "active_job": null,
+    "application_version": "0.2.0",
+    "families": [
+      {
+        "id": "arithmetic",
+        "label": "等差数列",
+        "levels": [
+          1
+        ]
+      },
+      {
+        "id": "geometric",
+        "label": "等比数列",
+        "levels": [
+          1
+        ]
+      },
+      {
+        "id": "scaled_constant",
+        "label": "単項式の階比",
+        "levels": [
+          2
+        ]
+      },
+      {
+        "id": "factorial_ratio",
+        "label": "階乗型の階比",
+        "levels": [
+          2
+        ]
+      },
+      {
+        "id": "second_order",
+        "label": "基本的な3項間漸化式",
+        "levels": [
+          3
+        ]
+      },
+      {
+        "id": "reciprocal_affine",
+        "label": "一次分数・逆数",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "weighted_sum",
+        "label": "正規化と重み付き総和",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "affine",
+        "label": "不動点を引く2項間",
+        "levels": [
+          2
+        ]
+      },
+      {
+        "id": "shifted_scaled",
+        "label": "階比と定数の移動（12倍率）",
+        "levels": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "scaled_affine",
+        "label": "階比と不動点（9倍率）",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "reciprocal_scaled",
+        "label": "逆数と階比（9倍率）",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "polynomial_forcing",
+        "label": "一次式の付加項",
+        "levels": [
+          3
+        ]
+      },
+      {
+        "id": "reciprocal_forcing",
+        "label": "逆数と一次式の付加項",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "polynomial_difference",
+        "label": "多項式の階差（6多項式）",
+        "levels": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "mobius",
+        "label": "不動点の差を逆数にする1次分数",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "scaled_second_order",
+        "label": "正規化＋3項間",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "difference_scaled",
+        "label": "階差＋階比＋総和",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "forced_second",
+        "label": "定数項を含む3項間",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "arithmetic_difference",
+        "label": "等差と階差の組合せ",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "pure_sum",
+        "label": "部分和の漸化式",
+        "levels": [
+          2
+        ]
+      },
+      {
+        "id": "pure_sum_scaled",
+        "label": "正規化した部分和の3項間",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "sum_relation",
+        "label": "部分和と一般項の関係",
+        "levels": [
+          2
+        ]
+      },
+      {
+        "id": "ratio_power",
+        "label": "指数係数の階比型",
+        "levels": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "multiplicative_second",
+        "label": "対数＋二重の階差",
+        "levels": [
+          5
+        ]
+      },
+      {
+        "id": "coupled_symmetric",
+        "label": "対称な連立",
+        "levels": [
+          3
+        ]
+      },
+      {
+        "id": "coupled_weighted",
+        "label": "一次結合で分離する連立",
+        "levels": [
+          3
+        ]
+      },
+      {
+        "id": "coupled_scaled",
+        "label": "正規化する連立",
+        "levels": [
+          4
+        ]
+      },
+      {
+        "id": "coupled_forced",
+        "label": "付加項のある連立",
+        "levels": [
+          3,
+          5
+        ]
+      }
+    ],
+    "history_count": 40,
+    "limits": {
+      "candidate_limit": 200,
+      "lean_candidate_limit": 2,
+      "lean_timeout_seconds": 60,
+      "request_timeout_seconds": 120,
+      "search_timeout_seconds": 10
+    },
+    "ready": true,
+    "verification": {
+      "message": "Lean 4.19.0と固定した共通モジュールの準備が完了しています。",
+      "ready": true,
+      "version": "4.19.0"
+    }
+  },
+  "measurement": "prepared environment; serial requests; client polling included in request_elapsed_ms"
+}
