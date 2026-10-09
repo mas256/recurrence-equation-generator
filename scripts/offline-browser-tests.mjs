@@ -68,10 +68,17 @@ async function waitUI() {
   assert.equal(await page.locator("#notice").isVisible(), false, await page.locator("#notice-text").textContent());
 }
 async function download(selector) {
-  const event = page.waitForEvent("download");
-  await page.locator(selector).click();
-  const item = await event;
+  const [item] = await Promise.all([page.waitForEvent("download"), page.locator(selector).click()]);
   return fs.readFile(await item.path(), "utf8");
+}
+async function openAnswer() {
+  const oldHref = await page.locator("#download-tex").getAttribute("href");
+  await page.locator("#solution-panel summary").click();
+  await page.waitForFunction(previous => {
+    const link = document.getElementById("download-tex");
+    return document.getElementById("solution-panel").open && link.href.startsWith("blob:")
+      && link.href !== previous && !link.hasAttribute("aria-disabled");
+  }, oldHref);
 }
 
 try {
@@ -98,8 +105,7 @@ try {
   assert.ok(!question.includes("\\subsection*{解答}"));
   await page.locator("#hint-panel summary").click();
   assert.equal(await download("#download-tex"), question);
-  await page.locator("#solution-panel summary").click();
-  await page.waitForFunction(() => !document.getElementById("download-tex").hasAttribute("aria-disabled"));
+  await openAnswer();
   const answer = await download("#download-tex");
   assert.ok(answer.includes("\\subsection*{解答}"));
   await page.locator("#verification-panel summary").click();
@@ -147,8 +153,7 @@ try {
   const pair = fixtures.find(f => f.recipe.family === "coupled_scaled");
   await page.locator("#recipe-file").setInputFiles({ name: "paired.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(pair.recipe)) });
   await waitUI();
-  await page.locator("#solution-panel summary").click();
-  await page.waitForFunction(() => !document.getElementById("download-tex").hasAttribute("aria-disabled"));
+  await openAnswer();
   assert.equal(await page.locator(".katex-error").count(), 0);
   await page.locator("#verification-panel summary").click();
   assert.match(await page.locator("#verification-metadata").textContent(), /Lean実行していません/);
