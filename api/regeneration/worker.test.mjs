@@ -36,6 +36,23 @@ test('origin, methods and request bodies cannot select arbitrary dispatch inputs
   assert.equal(options.status, 204);
   assert.equal(options.headers.get('Access-Control-Allow-Origin'), origin);
   assert.equal((await worker.fetch(request('/status'), {})).status, 503);
+  const emptyStream = new Request('https://example.workers.dev/regenerate', {
+    method: 'POST', headers: { Origin: origin }, duplex: 'half',
+    body: new ReadableStream({ start(controller) { controller.close(); } }),
+  });
+  assert.equal((await worker.fetch(emptyStream, {})).status, 503);
+  const validEmptyStream = new Request('https://example.workers.dev/regenerate', {
+    method: 'POST', headers: { Origin: origin }, duplex: 'half',
+    body: new ReadableStream({ start(controller) { controller.close(); } }),
+  });
+  const env = { GITHUB_TOKEN: 'unit-test-token', REGENERATION_GATE: {
+    idFromName: name => name, get: () => ({ fetch(internal) {
+      assert.equal(internal.method, 'POST');
+      assert.equal(internal.body, null);
+      return Response.json({ accepted: true }, { status: 202 });
+    } }),
+  } };
+  assert.equal((await worker.fetch(validEmptyStream, env)).status, 202);
 });
 
 test('parallel clicks and a restarted isolate issue only one dispatch', async () => {

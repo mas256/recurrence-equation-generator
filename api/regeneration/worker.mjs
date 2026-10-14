@@ -27,14 +27,27 @@ export default {
         (path === '/status' && request.method !== 'GET')) return json({ error: 'method_not_allowed' }, 405, cors);
     // This intentionally anonymous endpoint can only dispatch the fixed workflow on main.
     // Browser-origin checks are not authentication; the durable cooldown is the execution cap.
-    if (request.method === 'POST' &&
-        (request.body !== null || request.headers.has('Content-Length') && request.headers.get('Content-Length') !== '0')) {
-      return json({ error: 'body_not_allowed' }, 400, cors);
+    if (request.method === 'POST') {
+      if (request.headers.has('Content-Length') && request.headers.get('Content-Length') !== '0') {
+        return json({ error: 'body_not_allowed' }, 400, cors);
+      }
+      // Inbound HTTP requests can expose an empty stream rather than a null body.
+      // Reject the first nonempty chunk without buffering an arbitrary payload.
+      if (request.body) {
+        const reader = request.body.getReader();
+        try {
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            if (value?.byteLength) return json({ error: 'body_not_allowed' }, 400, cors);
+          }
+        } finally { await reader.cancel(); }
+      }
     }
     if (!env.GITHUB_TOKEN || !env.REGENERATION_GATE) return json({ error: 'not_configured' }, 503, cors);
     try {
       const gate = env.REGENERATION_GATE.get(env.REGENERATION_GATE.idFromName('public-recurrence-bank'));
-      const result = await gate.fetch(request);
+      const result = await gate.fetch(new Request(request.url, { method: request.method }));
       const response = new Response(result.body, result);
       for (const [key, value] of Object.entries(cors)) response.headers.set(key, value);
       return response;
