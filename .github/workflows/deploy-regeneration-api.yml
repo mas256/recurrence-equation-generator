@@ -1,0 +1,55 @@
+name: Deploy recurrence regeneration API
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: recurrence-regeneration-api-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test request handling
+        run: node --test api/regeneration/worker.test.mjs
+      - name: Check deployment configuration
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          REGENERATION_GITHUB_TOKEN: ${{ secrets.REGENERATION_GITHUB_TOKEN }}
+        run: |
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID REGENERATION_GITHUB_TOKEN; do
+            if [[ -z "${!name}" ]]; then
+              echo "::error::Configure repository secret $name before deploying. See api/regeneration/README.md."
+              exit 1
+            fi
+          done
+      - name: Deploy Worker and its server-side GitHub secret
+        id: worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ github.token }}
+          workingDirectory: api/regeneration
+          wranglerVersion: "4.150.0"
+          command: deploy
+          secrets: |
+            GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.REGENERATION_GITHUB_TOKEN }}
+      - name: Show the public API URL
+        env:
+          WORKER_URL: ${{ steps.worker.outputs.deployment-url }}
+        run: |
+          echo "Set math-textbooks repository variable RECURRENCE_REGENERATION_API_URL to this origin, then run Deploy Pages:" >> "$GITHUB_STEP_SUMMARY"
+          echo "$WORKER_URL" >> "$GITHUB_STEP_SUMMARY"
