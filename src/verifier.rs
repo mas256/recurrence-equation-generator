@@ -150,8 +150,9 @@ impl Verifier {
             .map_err(VerificationError::Unavailable)?;
         // Regenerate the entire IR; a successful old record cannot bless modified content.
         let replayed = generator::replay(&problem.recipe).map_err(VerificationError::Failed)?;
-        if replayed.problem != problem.problem
-            || replayed.id != problem.id
+        if serde_json::to_value(&replayed).map_err(|e| VerificationError::Failed(e.to_string()))?
+            != serde_json::to_value(problem)
+                .map_err(|e| VerificationError::Failed(e.to_string()))?
             || generator::content_hash_for_version(&problem.problem, &problem.recipe.rules_version)
                 .map_err(VerificationError::Failed)?
                 != problem.id
@@ -329,6 +330,9 @@ pub(crate) fn natural(value: &NatExpr, bound: Option<&str>) -> Result<String, St
             natural(denominator, bound)?
         ),
         NatExpr::Pow { base, exponent } => format!("({} ^ {exponent})", natural(base, bound)?),
+        NatExpr::GeometricPower { base, exponent } => {
+            format!("({base} ^ {})", natural(exponent, bound)?)
+        }
         NatExpr::Choose { n, k } => format!("(Nat.choose {} {k})", natural(n, bound)?),
     })
 }

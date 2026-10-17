@@ -1226,11 +1226,14 @@ fn explain_scalar(
             steps.push(ds(
                 "毎回同じ値になる不動点を、x=r x+qから求める。",
                 Some(Equation::new(
-                    Expr::integer(0),
-                    Expr::sub(
+                    Expr::rational(fixed.clone()),
+                    Expr::add(vec![
+                        Expr::mul(vec![
+                            Expr::rational(ratio.clone()),
+                            Expr::rational(fixed.clone()),
+                        ]),
                         Expr::rational(forcing.clone()),
-                        Expr::rational(Rational::integer(1).sub(ratio).mul(&fixed)),
-                    ),
+                    ]),
                 )),
                 "不動点方程式の係数比較",
             ));

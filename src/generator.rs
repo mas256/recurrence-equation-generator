@@ -1,7 +1,7 @@
 //! Registered dynamic generators and forward, statement-based solution detection.
 use crate::math::{Equation, Expr, NatExpr, Rational};
 use num_traits::{Signed, ToPrimitive};
-use rand::{Rng, SeedableRng};
+use rand::Rng;
 use rand_chacha::ChaCha8Rng;
 use serde::{Deserialize, Deserializer, Serialize};
 use sha2::{Digest, Sha256};
@@ -9,6 +9,7 @@ use std::collections::{BTreeMap, BTreeSet};
 
 pub const RULES_VERSION: &str = "rust-registered-1.0/reference-0.7.0";
 pub const EXTENSION_RULES_VERSION: &str = "rust-registered-1.1/reference-0.7.0";
+pub const CURRENT_RULES_VERSION: &str = "rust-registered-2.0/education-2.0";
 pub const RNG_VERSION: &str = "rand_chacha-0.3/ChaCha8Rng-v1";
 pub const SCHEMA_VERSION: &str = "1.0";
 
@@ -26,7 +27,7 @@ pub fn family_catalog() -> Vec<FamilyInfo> {
         ("scaled_constant", "単項式の階比", 2),
         ("factorial_ratio", "階乗型の階比", 2),
         ("second_order", "基本的な3項間漸化式", 3),
-        ("reciprocal_affine", "一次分数・逆数", 4),
+        ("reciprocal_affine", "一次分数・逆数", 3),
         ("weighted_sum", "正規化と重み付き総和", 5),
     ]
     .into_iter()
@@ -213,6 +214,10 @@ pub struct GeneratedProblem {
     pub solution: Vec<SolutionStep>,
     pub answer_latex: String,
     pub family_label: String,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub routes: Vec<crate::learning::SolutionRoute>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub variant: Option<crate::selection::VariantDescriptor>,
 }
 
 pub(crate) fn parameters(items: &[(&str, Rational)]) -> BTreeMap<String, Rational> {
@@ -234,7 +239,11 @@ pub(crate) fn block(
         parameters,
     }
 }
-fn build_recipe(family: &str, seed: u64, p: BTreeMap<String, Rational>) -> Result<Recipe, String> {
+pub(crate) fn build_recipe(
+    family: &str,
+    seed: u64,
+    p: BTreeMap<String, Rational>,
+) -> Result<Recipe, String> {
     if crate::extensions::supports(family) {
         return crate::extensions::build_recipe(family, seed, p);
     }
@@ -391,20 +400,17 @@ pub fn generate_limited(
     seed: u64,
     max_candidates: usize,
 ) -> Result<GeneratedProblem, String> {
-    if !(1..=5).contains(&level) {
-        return Err("難易度はLv1からLv5です。".into());
-    }
-    let candidates = family_catalog()
-        .into_iter()
-        .filter(|f| f.levels.contains(&level))
-        .collect::<Vec<_>>();
-    if family.is_some_and(|id| !candidates.iter().any(|f| f.id == id)) {
-        return Err("選択した型は指定Lvに対応していません。".into());
-    }
-    let mut rng = ChaCha8Rng::seed_from_u64(seed);
-    let chosen = family
-        .map(str::to_string)
-        .unwrap_or_else(|| candidates[rng.gen_range(0..candidates.len())].id.clone());
+    crate::selection::generate(level, family, seed, &[], &[], "standard", max_candidates)
+}
+
+pub(crate) fn sample_recipe(
+    chosen: &str,
+    level: u8,
+    profile: Option<u32>,
+    variant: &str,
+    seed: u64,
+    rng: &mut ChaCha8Rng,
+) -> Result<Recipe, String> {
     let preferred = [1, 2, 3, 4, 5, 6, 8, 9];
     // Sample reduced values uniformly rather than overweighting fractions with
     // several representations. The 43 distinct amplitudes exceed the 40-item
@@ -420,57 +426,79 @@ pub fn generate_limited(
         .collect::<BTreeSet<_>>()
         .into_iter()
         .collect::<Vec<_>>();
-    let mut last_error = String::new();
-    for _ in 0..max_candidates {
-        let c = amplitudes[rng.gen_range(0..amplitudes.len())].clone();
-        let d = Rational::integer(preferred[rng.gen_range(0..preferred.len())]);
-        let r = Rational::integer(rng.gen_range(2..=5));
-        let mut s = Rational::integer(rng.gen_range(2..=5));
-        while s == r {
-            s = Rational::integer(rng.gen_range(2..=5));
+    let c = amplitudes[rng.gen_range(0..amplitudes.len())].clone();
+    let d = Rational::integer(preferred[rng.gen_range(0..preferred.len())]);
+    let r = Rational::integer(rng.gen_range(2..=5));
+    let mut s = Rational::integer(rng.gen_range(2..=5));
+    while s == r {
+        s = Rational::integer(rng.gen_range(2..=5));
+    }
+    let mut p = match chosen {
+        "arithmetic" | "reciprocal_affine" => parameters(&[("c", c), ("d", d)]),
+        "geometric" | "factorial_ratio" => parameters(&[("c", c), ("r", r)]),
+        "scaled_constant" => parameters(&[("c", c)]),
+        "second_order" => parameters(&[("c", c), ("d", d), ("r", r), ("s", s)]),
+        "weighted_sum" => parameters(&[("c", c), ("r", r), ("s", s)]),
+        _ if crate::extensions::elementary::supports(chosen) => {
+            crate::extensions::elementary::sample_variant(chosen, variant, rng)?
         }
-        let p = match chosen.as_str() {
-            "arithmetic" | "reciprocal_affine" => parameters(&[("c", c), ("d", d)]),
-            "geometric" | "factorial_ratio" => parameters(&[("c", c), ("r", r)]),
-            "scaled_constant" => parameters(&[("c", c)]),
-            "second_order" => parameters(&[("c", c), ("d", d), ("r", r), ("s", s)]),
-            "weighted_sum" => parameters(&[("c", c), ("r", r), ("s", s)]),
-            _ => crate::extensions::sample(&chosen, level, &mut rng)?,
-        };
-        let recipe = build_recipe(&chosen, seed, p)?;
-        match replay(&recipe) {
-            Ok(problem)
-                if problem.classification.level == level
-                    && problem.classification.numeric_cost <= 8 =>
-            {
-                return Ok(problem)
-            }
-            Ok(_) => last_error = "短い解法により再分類されました。".into(),
-            Err(e) => last_error = e,
+        _ if crate::extensions::exponential::supports(chosen) => {
+            crate::extensions::exponential::sample_variant(chosen, variant, rng)?
+        }
+        _ => crate::extensions::sample(chosen, level, rng)?,
+    };
+    if let Some(profile) = profile {
+        p.insert("profile".into(), Rational::integer(i64::from(profile)));
+    }
+    if chosen == "second_order" {
+        if let Some(pair) = variant.strip_prefix("roots_") {
+            let (r, s) = pair.split_once('_').ok_or("特性根の分岐が不正です。")?;
+            p.insert(
+                "r".into(),
+                Rational::integer(r.parse::<i64>().map_err(|e| e.to_string())?),
+            );
+            p.insert(
+                "s".into(),
+                Rational::integer(s.parse::<i64>().map_err(|e| e.to_string())?),
+            );
         }
     }
-    Err(format!(
-        "品質条件を満たす候補が{max_candidates}件以内に見つかりませんでした。{last_error}"
-    ))
+    let mut recipe = build_recipe(chosen, seed, p)?;
+    recipe.rules_version = CURRENT_RULES_VERSION.into();
+    Ok(recipe)
 }
 pub fn replay(recipe: &Recipe) -> Result<GeneratedProblem, String> {
+    if (crate::extensions::elementary::supports(&recipe.family)
+        || crate::extensions::exponential::supports(&recipe.family))
+        && recipe.rules_version != CURRENT_RULES_VERSION
+    {
+        return Err("新しい細分類には生成規則版2.0が必要です。".into());
+    }
     if recipe.schema_version != SCHEMA_VERSION
-        || recipe.rules_version
-            != if crate::extensions::supports(&recipe.family) {
-                EXTENSION_RULES_VERSION
-            } else {
-                RULES_VERSION
-            }
+        || (recipe.rules_version != CURRENT_RULES_VERSION
+            && recipe.rules_version
+                != if crate::extensions::supports(&recipe.family) {
+                    EXTENSION_RULES_VERSION
+                } else {
+                    RULES_VERSION
+                })
         || recipe.rng_version != RNG_VERSION
     {
         return Err("Recipeの版がこのアプリと一致しません。".into());
     }
     validate_parameters(&recipe.family, &recipe.parameters)?;
-    if *recipe != build_recipe(&recipe.family, recipe.seed, recipe.parameters.clone())? {
+    let mut expected = build_recipe(&recipe.family, recipe.seed, recipe.parameters.clone())?;
+    expected.rules_version = recipe.rules_version.clone();
+    if *recipe != expected {
         return Err("Recipeの接続・ブロック・正規化が登録規則と一致しません。".into());
     }
     let problem = compile(recipe)?;
-    let classification = classify(&problem)?;
+    let modern = recipe.rules_version == CURRENT_RULES_VERSION;
+    let classification = if modern {
+        classify(&problem)?
+    } else {
+        classify_legacy(&problem)?
+    };
     let derivation = explain(&problem, &classification)?;
     let statement_latex = format!(
         "\\begin{{gathered}}{}\\quad(n\\ge1)\\\\{}\\end{{gathered}}",
@@ -509,7 +537,7 @@ pub fn replay(recipe: &Recipe) -> Result<GeneratedProblem, String> {
         .find(|f| f.id == recipe.family)
         .ok_or("未登録の型です。")?
         .label;
-    Ok(GeneratedProblem {
+    let mut generated = GeneratedProblem {
         id,
         recipe: recipe.clone(),
         problem,
@@ -520,7 +548,15 @@ pub fn replay(recipe: &Recipe) -> Result<GeneratedProblem, String> {
         solution,
         answer_latex,
         family_label,
-    })
+        routes: Vec::new(),
+        variant: None,
+    };
+    crate::learning::attach(&mut generated, modern)?;
+    if modern {
+        generated.variant =
+            crate::selection::describe(&generated.recipe, generated.classification.level);
+    }
+    Ok(generated)
 }
 pub fn content_hash(problem: &ProblemIR) -> Result<String, String> {
     content_hash_for_version(problem, RULES_VERSION)
@@ -841,9 +877,27 @@ pub(crate) fn initial_value(problem: &ProblemIR, index: usize) -> Result<Rationa
 }
 
 pub fn classify(problem: &ProblemIR) -> Result<Classification, String> {
-    if let Some(result) = crate::extensions::classify(problem)? {
-        return Ok(result);
+    if let Some(c) = crate::extensions::elementary::classify_degenerate(problem)? {
+        return Ok(c);
     }
+    if let Some(c) = crate::extensions::classify(problem)? {
+        return Ok(c);
+    }
+    if let Some(c) = crate::extensions::elementary::classify(problem)? {
+        return Ok(c);
+    }
+    if let Some(c) = crate::extensions::exponential::classify(problem)? {
+        return Ok(c);
+    }
+    classify_core(problem)
+}
+fn classify_legacy(problem: &ProblemIR) -> Result<Classification, String> {
+    if let Some(c) = crate::extensions::classify(problem)? {
+        return Ok(c);
+    }
+    classify_core(problem)
+}
+fn classify_core(problem: &ProblemIR) -> Result<Classification, String> {
     let rhs = &problem.recurrence.rhs;
     let a = Expr::term("a", 0);
     let (score, reason, method, operations, discovery, domain, degree) = match problem.kind {
@@ -1463,7 +1517,7 @@ fn explain(problem: &ProblemIR, classification: &Classification) -> Result<Deriv
         }
         _ => return Err("教材出力の解法が未登録です。".into()),
     };
-    steps.push(step("得られた一般項は初期条件と漸化式をすべての添字で満たす。初期条件から順に項が決まるため、この数列は一意である。",None,"この内容は各問題のLean証明の検証対象"));
+    steps.push(step("得られた一般項は初期条件と漸化式をすべての添字で満たす。初期条件から順に項が決まるため、この数列は一意である。",None,"初期条件・更新式への代入と一意性"));
     Ok(DerivationIR {
         method_name: classification.method_name.clone(),
         hint: hint.into(),

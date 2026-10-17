@@ -17,7 +17,7 @@ pub fn catalog() -> Vec<FamilyInfo> {
     [
         ("pure_sum", "部分和の漸化式", 2),
         ("pure_sum_scaled", "正規化した部分和の3項間", 5),
-        ("sum_relation", "部分和と一般項の関係", 2),
+        ("sum_relation", "部分和と一般項の関係", 3),
     ]
     .into_iter()
     .map(|(id, label, level)| FamilyInfo {
@@ -707,7 +707,11 @@ pub fn forward(problem: &ProblemIR) -> Result<SumRoute, String> {
         step("部分和を先に解く方法でも同じ一般項が得られる。", Some(Equation::new(Expr::term("S", 0), partial_formula)), "部分和の一次漸化式とS₁"),
         step("S_n−S_(n−1)をとる。n=1でもS₀=0であるため、次の式が成立する。", Some(Equation::new(Expr::term("a", 0), formula.clone())), "部分和の差と初期境界"),
     ];
-    steps.push(step("初期条件と元の部分和の漸化式を全ての添字で満たすことをLeanで検証する。部分和と各項は一意に決まる。", None, "部分和の一意性と隣接差"));
+    steps.push(step(
+        "初期条件と元の部分和の漸化式に代入して整合性を確かめる。部分和と各項は一意に決まる。",
+        None,
+        "部分和の一意性と隣接差",
+    ));
     let operations = if u.is_zero() {
         vec!["eliminate_sum".into(), "geometric".into()]
     } else {
@@ -866,7 +870,7 @@ fn relation_route(problem: &ProblemIR) -> Result<SumRoute, String> {
         step(&format!("非同次項を消す一次式の特解は{}n+{}である。これを引く補助数列を定義する。", u, v), Some(definition.clone()), "一次式の係数比較"),
         step("補助数列は等比数列となる。", Some(brec.clone()), "特解を引いて非同次項を消す"),
         step("初期条件で等比数列の係数を定め、元の数列へ戻す。", Some(Equation::new(Expr::term("a", 0), formula.clone())), "初項と逆変換"),
-        step("n=1の部分和S₁=a₁も元の関係式を満たす。一般項・全添字の総和の関係・一意性をLeanで検証する。", None, "部分和の初期境界とα≠1による一意性"),
+        step("n=1の部分和S₁=a₁も元の関係式を満たす。一般項と総和の関係を代入で確かめ、一意性を用いる。", None, "部分和の初期境界とα≠1による一意性"),
     ];
     Ok(SumRoute {
         score: 6,
@@ -985,7 +989,7 @@ fn scaled_route(problem: &ProblemIR) -> Result<SumRoute, String> {
         step(&format!("特性方程式の異なる2根は{}、{}である。S₁/g₁とS₂/g₂から2つの係数を定める。", r, s), Some(binit.clone()), "特性方程式と2つの初期条件"),
         step("倍率を掛け戻して部分和を求める。", Some(Equation::new(Expr::term("S", 0), partial_formula)), "S_n=g_n b_n"),
         step("a_n=S_n−S_(n−1)で各項を求める。n=1ではS₀=0を使うため同じ式が成立する。", Some(Equation::new(Expr::term("a", 0), formula.clone())), "部分和の差、指数を下げる際には1/rと1/sで表す"),
-        step("部分和の境界S₀=0、2つの部分和の初期値、全添字の漸化式、各項の一意性をLeanで検証する。", None, "正規化した3項間と部分和の差の一意性"),
+        step("部分和の境界S₀=0と2つの初期値を確かめ、漸化式と隣接差から一意性を示す。", None, "正規化した3項間と部分和の差の一意性"),
     ];
     Ok(SumRoute {
         score: 20,

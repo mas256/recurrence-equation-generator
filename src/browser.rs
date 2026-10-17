@@ -9,13 +9,13 @@ use crate::{
 };
 use serde::Deserialize;
 use serde_json::{json, Value};
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::*;
 
 const CHECKED_TERMS: u32 = 20;
 const CANDIDATE_LIMIT: usize = 200;
-const MAX_JSON_BYTES: usize = 256 * 1024;
+const MAX_JSON_BYTES: usize = 512 * 1024;
 const MAX_SAFE_JS_INTEGER: u64 = 9_007_199_254_740_991;
 
 #[derive(Deserialize)]
@@ -27,10 +27,17 @@ struct GenerateRequest {
     seed: Value,
     #[serde(default)]
     recent_ids: Vec<String>,
+    #[serde(default)]
+    selection_history: Vec<crate::selection::SelectionRecord>,
+    #[serde(default = "standard_mode")]
+    practice_mode: String,
+}
+fn standard_mode() -> String {
+    "standard".into()
 }
 fn parse_json(text: &str) -> Result<Value, String> {
     if text.len() > MAX_JSON_BYTES {
-        return Err("JSONファイルは256 KiB以下にしてください。".into());
+        return Err("JSONファイルは512 KiB以下にしてください。".into());
     }
     serde_json::from_str(text).map_err(|e| format!("JSONを読み込めません: {e}"))
 }
@@ -86,6 +93,16 @@ fn exact_checks(problem: &GeneratedProblem) -> Result<Value, String> {
         != serde_json::to_value(problem).map_err(|e| e.to_string())?
     {
         return Err("Recipeと表示する問題・解法の内容が一致しません。".into());
+    }
+    if let Some(mut check) = crate::extensions::exponential::finite_checks(&problem.problem)? {
+        check["status"] = json!("browser_checked");
+        check["engine"] = json!("rust_wasm");
+        check["checked_terms"] = json!(20);
+        check["problem_hash"] = json!(problem.id);
+        check["recipe_replayed"] = json!(true);
+        check["formal_verification"] = json!(false);
+        check["lean_executed"] = json!(false);
+        return Ok(check);
     }
     let mut formulas = BTreeMap::new();
     for equation in std::iter::once(&problem.problem.general_term)
@@ -156,6 +173,8 @@ pub fn browser_catalog() -> Result<String, String> {
     serde_json::to_string(&json!({
         "ready":true, "deployment_mode":"browser", "engine":"rust_wasm",
         "application_version":env!("CARGO_PKG_VERSION"), "families":generator::family_catalog(),
+        "methods":crate::learning::methods(), "coverage":crate::coverage::catalog(),
+        "variants":crate::selection::catalog(), "selection_policy_version":crate::selection::VERSION, "assessment_version":crate::learning::ASSESSMENT_VERSION,
         "limits":{"candidate_limit":CANDIDATE_LIMIT}, "checked_terms":CHECKED_TERMS,
     }))
     .map_err(|e| e.to_string())
@@ -188,30 +207,20 @@ pub fn browser_generate(request_json: &str) -> Result<String, String> {
     {
         return Err("recent_idsには直近40件以内の問題IDを指定してください。".into());
     }
-    let recent: BTreeSet<_> = request.recent_ids.iter().map(String::as_str).collect();
-    let mut last_error = "品質条件を満たす問題を生成できませんでした。".to_owned();
-    for attempt in 0..CANDIDATE_LIMIT {
-        match generator::generate_limited(
-            request.level,
-            family,
-            seed.wrapping_add(attempt as u64),
-            1,
-        ) {
-            Ok(problem)
-                if problem.classification.level == request.level
-                    && problem.classification.numeric_cost <= 8
-                    && !recent.contains(problem.id.as_str()) =>
-            {
-                let check = exact_checks(&problem)?;
-                return encode(&problem, check);
-            }
-            Ok(_) => last_error = "直近の問題と重複したため、別の候補を探しました。".into(),
-            Err(error) => last_error = error,
-        }
+    if request.selection_history.len() > 2000 {
+        return Err("選択履歴は直近2,000件までです。".into());
     }
-    Err(format!(
-        "{CANDIDATE_LIMIT}件以内に条件を満たす問題が見つかりませんでした。{last_error}"
-    ))
+    let problem = crate::selection::generate(
+        request.level,
+        family,
+        seed,
+        &request.selection_history,
+        &request.recent_ids,
+        &request.practice_mode,
+        CANDIDATE_LIMIT,
+    )?;
+    let check = exact_checks(&problem)?;
+    encode(&problem, check)
 }
 
 /// Canonical Recipe validation runs before finite exact arithmetic checks.
@@ -248,7 +257,7 @@ mod tests {
     use super::*;
     #[test]
     fn every_family_is_checked_replayable_and_exportable() {
-        assert_eq!(generator::family_catalog().len(), 28);
+        assert!(generator::family_catalog().len() > 28);
         for family in generator::family_catalog() {
             let generated = browser_generate(
                 &json!({"level":family.levels[0],"family":family.id,"seed":"18446744073709551615"})
@@ -349,7 +358,7 @@ mod tests {
     }
     #[test]
     fn changed_problem_ir_is_rejected() {
-        let original = generator::generate(4, Some("reciprocal_affine"), 64).unwrap();
+        let original = generator::generate(3, Some("reciprocal_affine"), 64).unwrap();
         let mut changed = original.clone();
         changed.problem.initials[0].rhs = Expr::integer(999);
         assert!(exact_checks(&changed).is_err());

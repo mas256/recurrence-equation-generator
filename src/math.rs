@@ -131,6 +131,11 @@ pub enum NatExpr {
         base: Box<NatExpr>,
         exponent: u32,
     },
+    /// An integer base raised to an index expression (for iterated powers).
+    GeometricPower {
+        base: u32,
+        exponent: Box<NatExpr>,
+    },
     Choose {
         n: Box<NatExpr>,
         k: u32,
@@ -155,6 +160,7 @@ impl NatExpr {
             Self::Pow { base, exponent } => {
                 base.degree().saturating_mul((*exponent).min(255) as u8)
             }
+            Self::GeometricPower { .. } => u8::MAX,
             Self::Choose { n, k } => n.degree().saturating_mul((*k).min(255) as u8),
         }
     }
@@ -225,6 +231,9 @@ impl NatExpr {
                 .evaluate(n, bound)?
                 .checked_pow(*exponent)
                 .ok_or("添字が大きすぎます。")?,
+            Self::GeometricPower { base, exponent } => base
+                .checked_pow(exponent.evaluate(n, bound)?)
+                .ok_or("指数が大きすぎます。専用の指数検査を使用してください。")?,
             Self::Choose { n: value, k } => {
                 let m = value.evaluate(n, bound)?;
                 if *k > m {
@@ -272,6 +281,9 @@ impl NatExpr {
             Self::Pow { base, exponent } => {
                 format!("\\left({}\\right)^{{{exponent}}}", base.latex())
             }
+            Self::GeometricPower { base, exponent } => {
+                format!("{base}^{{{}}}", exponent.latex())
+            }
             Self::Choose { n, k } => format!("\\binom{{{}}}{{{k}}}", n.latex()),
         }
     }
@@ -292,6 +304,7 @@ impl NatExpr {
                 denominator,
             } => format!("({} / {})", numerator.lean(), denominator.lean()),
             Self::Pow { base, exponent } => format!("({} ^ {exponent})", base.lean()),
+            Self::GeometricPower { base, exponent } => format!("({base} ^ {})", exponent.lean()),
             Self::Choose { n, k } => format!("Nat.choose {} {k}", n.lean()),
         }
     }

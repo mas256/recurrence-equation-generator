@@ -6,8 +6,10 @@ use axum::{
     Json, Router,
 };
 use recurrence_lab::{
-    export,
+    coverage, export,
     generator::{self, GeneratedProblem, Recipe},
+    learning,
+    selection::{self, SelectionRecord},
     verifier::{VerificationError, VerificationRecord, Verifier},
 };
 use serde::{Deserialize, Serialize};
@@ -36,7 +38,7 @@ struct Store {
     jobs: HashMap<String, Job>,
     active: Option<String>,
     problems: HashMap<String, VerifiedProblem>,
-    recent: VecDeque<(String, String)>,
+    recent: VecDeque<SelectionRecord>,
 }
 struct Job {
     id: String,
@@ -78,6 +80,11 @@ struct GenerateRequest {
     #[serde(default)]
     family: Option<String>,
     seed: Option<u64>,
+    #[serde(default = "standard_practice_mode")]
+    practice_mode: String,
+}
+fn standard_practice_mode() -> String {
+    "standard".into()
 }
 #[derive(Deserialize)]
 struct ReplayRequest {
@@ -119,7 +126,9 @@ async fn status(State(app): State<App>) -> Json<Value> {
     let environment = app.verifier.status();
     let store = app.inner.lock().unwrap();
     Json(json!({"ready":environment.ready,"verification":environment,
-        "families":generator::family_catalog(),"limits":app.limits,
+        "families":generator::family_catalog(),"methods":learning::methods(),
+        "coverage":coverage::catalog(),"variants":selection::catalog(),"selection_policy_version":selection::VERSION,"limits":app.limits,
+        "verification_scope":{"native":"original_problem","routes":"finite_equation_checks"},
         "active_job":store.active,"history_count":store.recent.len(),
         "application_version":env!("CARGO_PKG_VERSION")}))
 }
@@ -133,6 +142,12 @@ async fn generate(
         return Err(error(
             StatusCode::BAD_REQUEST,
             "難易度はLv1〜Lv5を指定してください。",
+        ));
+    }
+    if !["standard", "method_choice", "alternatives"].contains(&request.practice_mode.as_str()) {
+        return Err(error(
+            StatusCode::BAD_REQUEST,
+            "演習形式を正しく指定してください。",
         ));
     }
     if let Some(family) = request.family.as_deref().filter(|x| *x != "mixed") {
@@ -212,34 +227,6 @@ fn update_job(app: &App, id: &str, status: &str, phase: &str, message: &str) {
         job.message = message.into();
     }
 }
-fn choose_family(app: &App, level: u8) -> Option<String> {
-    let catalog = generator::family_catalog();
-    let recent = app.inner.lock().unwrap().recent.clone();
-    let options: Vec<_> = catalog
-        .iter()
-        .filter(|f| f.levels.contains(&level))
-        .collect();
-    if options.is_empty() {
-        return None;
-    }
-    // Pick a family first. Reduce repetition over the recent forty accepted problems.
-    let weights: Vec<u64> = options
-        .iter()
-        .map(|f| {
-            let count = recent.iter().filter(|(_, family)| family == &f.id).count() as u64;
-            let base = if f.id.contains("reciprocal") { 2 } else { 1 };
-            (100 * base / (1 + count)).max(1)
-        })
-        .collect();
-    let mut ticket = rand::random::<u64>() % weights.iter().sum::<u64>();
-    for (family, weight) in options.iter().zip(weights) {
-        if ticket < weight {
-            return Some(family.id.clone());
-        }
-        ticket -= weight;
-    }
-    Some(options[0].id.clone())
-}
 fn run_job(app: App, id: String, work: Work, cancel: Arc<AtomicBool>) {
     let started = Instant::now();
     let deadline = Duration::from_secs(app.limits.request_timeout_seconds);
@@ -266,60 +253,45 @@ fn run_job(app: App, id: String, work: Work, cancel: Arc<AtomicBool>) {
             return;
         }
         let search_started = Instant::now();
-        let mut candidate = None;
-        for _ in 0..app.limits.candidate_limit {
-            if cancel.load(Ordering::SeqCst)
-                || search_spent + search_started.elapsed()
-                    >= Duration::from_secs(app.limits.search_timeout_seconds)
-                || started.elapsed() >= deadline
-                || searched >= app.limits.candidate_limit
-            {
-                break;
-            }
-            let result = match &work {
-                Work::Replay(recipe) => generator::replay(recipe),
-                Work::Generate(r) => {
-                    let family = r.family.clone().filter(|f| f != "mixed").or_else(|| {
-                        if r.seed.is_none() {
-                            choose_family(&app, r.level)
-                        } else {
-                            None
-                        }
-                    });
-                    let budget = if r.seed.is_some() {
-                        app.limits.candidate_limit - searched
-                    } else {
-                        1
-                    };
-                    searched += budget;
-                    generator::generate_limited(
-                        r.level,
-                        family.as_deref(),
-                        r.seed.unwrap_or_else(rand::random),
-                        budget,
-                    )
-                }
-            };
-            match result {
-                Ok(problem) => {
-                    let duplicate = app
-                        .inner
-                        .lock()
-                        .unwrap()
-                        .recent
-                        .iter()
-                        .any(|(old, _)| old == &problem.id);
-                    if fixed || !duplicate {
-                        candidate = Some(problem);
-                        break;
-                    }
-                }
-                Err(reason) => last_error = reason,
-            }
-            if fixed {
-                break;
-            }
+        let remaining_budget = app.limits.candidate_limit.saturating_sub(searched);
+        if remaining_budget == 0 {
+            break;
         }
+        let result = match &work {
+            Work::Replay(recipe) => generator::replay(recipe),
+            Work::Generate(r) => {
+                let history: Vec<_> = app.inner.lock().unwrap().recent.iter().cloned().collect();
+                let recent_ids: Vec<_> = history
+                    .iter()
+                    .rev()
+                    .take(40)
+                    .map(|h| h.id.clone())
+                    .collect();
+                let attempts_left = if fixed {
+                    1
+                } else {
+                    app.limits.lean_candidate_limit - proof_attempt
+                };
+                let budget = remaining_budget.div_ceil(attempts_left);
+                searched += budget;
+                selection::generate(
+                    r.level,
+                    r.family.as_deref().filter(|f| *f != "mixed"),
+                    r.seed.unwrap_or_else(rand::random),
+                    &history,
+                    &recent_ids,
+                    &r.practice_mode,
+                    budget,
+                )
+            }
+        };
+        let candidate = match result {
+            Ok(problem) => Some(problem),
+            Err(reason) => {
+                last_error = reason;
+                None
+            }
+        };
         search_spent += search_started.elapsed();
         let Some(problem) = candidate else {
             if cancel.load(Ordering::SeqCst) {
@@ -339,6 +311,22 @@ fn run_job(app: App, id: String, work: Work, cancel: Arc<AtomicBool>) {
             }
             return;
         };
+        if cancel.load(Ordering::SeqCst) {
+            finish(&app, &id, "cancelled", "生成を中止しました。", None);
+            return;
+        }
+        if started.elapsed() >= deadline
+            || search_spent >= Duration::from_secs(app.limits.search_timeout_seconds)
+        {
+            finish(
+                &app,
+                &id,
+                "timeout",
+                "候補探索または要求全体の時間上限に達しました。",
+                None,
+            );
+            return;
+        }
         update_job(
             &app,
             &id,
@@ -427,12 +415,17 @@ fn finish(app: &App, id: &str, status: &str, message: &str, result: Option<Verif
     let status = if cancelled { "cancelled" } else { status };
     let result = if cancelled { None } else { result };
     if let Some(result) = &result {
-        let family = serde_json::to_value(&result.problem.recipe)
-            .ok()
-            .and_then(|v| v["family"].as_str().map(str::to_owned))
-            .unwrap_or_default();
-        store.recent.push_back((result.problem.id.clone(), family));
-        while store.recent.len() > 40 {
+        store.recent.push_back(SelectionRecord {
+            id: result.problem.id.clone(),
+            family: result.problem.recipe.family.clone(),
+            variant: result
+                .problem
+                .variant
+                .as_ref()
+                .map(|v| v.id.clone())
+                .unwrap_or_default(),
+        });
+        while store.recent.len() > 2_000 {
             store.recent.pop_front();
         }
         store
@@ -440,7 +433,9 @@ fn finish(app: &App, id: &str, status: &str, message: &str, result: Option<Verif
             .insert(result.problem.id.clone(), result.clone());
         let history: Vec<_> = store.recent.iter().collect();
         if let Ok(bytes) = serde_json::to_vec(&history) {
-            let _ = fs::write(app.data_dir.join("history.json"), bytes);
+            let temporary = app.data_dir.join("history.json.tmp");
+            let _ = fs::write(&temporary, bytes)
+                .and_then(|_| fs::rename(&temporary, app.data_dir.join("history.json")));
         }
     }
     if let Some(job) = store.jobs.get_mut(id) {
@@ -564,6 +559,25 @@ fn serve_asset(path: &str) -> Response {
         None => StatusCode::NOT_FOUND.into_response(),
     }
 }
+fn decode_history(bytes: &[u8]) -> VecDeque<SelectionRecord> {
+    let mut history = serde_json::from_slice::<VecDeque<SelectionRecord>>(bytes)
+        .or_else(|_| {
+            serde_json::from_slice::<VecDeque<(String, String)>>(bytes).map(|old| {
+                old.into_iter()
+                    .map(|(id, family)| SelectionRecord {
+                        id,
+                        family,
+                        variant: String::new(),
+                    })
+                    .collect()
+            })
+        })
+        .unwrap_or_default();
+    while history.len() > 2_000 {
+        history.pop_front();
+    }
+    history
+}
 fn usage() {
     println!("recurrence-lab [--port 3210] [--data-dir PATH] [--lean-dir PATH] [--check]\n  --candidate-limit N --search-timeout SECONDS --lean-timeout SECONDS\n  --request-timeout SECONDS --lean-candidates N\n\n初回準備: bash scripts/setup-lean.sh\n起動後: http://127.0.0.1:3210 をブラウザーで開く");
 }
@@ -630,7 +644,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir_all(data_dir.join("problems"))?;
     let recent = fs::read(data_dir.join("history.json"))
         .ok()
-        .and_then(|bytes| serde_json::from_slice::<VecDeque<(String, String)>>(&bytes).ok())
+        .map(|bytes| decode_history(&bytes))
         .unwrap_or_default();
     let app = App {
         inner: Arc::new(Mutex::new(Store {
@@ -671,4 +685,31 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .await?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn history_migrates_old_family_records() {
+        let history = decode_history(br#"[["old-id","affine"]]"#);
+        assert_eq!(history.len(), 1);
+        assert_eq!(history[0].id, "old-id");
+        assert_eq!(history[0].family, "affine");
+        assert!(history[0].variant.is_empty());
+    }
+    #[test]
+    fn history_retains_latest_two_thousand_branches() {
+        let records: Vec<_> = (0..2_005)
+            .map(|i| SelectionRecord {
+                id: i.to_string(),
+                family: "affine".into(),
+                variant: "affine_default".into(),
+            })
+            .collect();
+        let history = decode_history(&serde_json::to_vec(&records).unwrap());
+        assert_eq!(history.len(), 2_000);
+        assert_eq!(history.front().unwrap().id, "5");
+        assert_eq!(history.back().unwrap().id, "2004");
+    }
 }
