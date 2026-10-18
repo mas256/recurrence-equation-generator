@@ -651,7 +651,7 @@ pub fn explain(
         alternatives: vec![],
     }))
 }
-fn replace_nat_index(value: &NatExpr, replacement: &NatExpr) -> NatExpr {
+pub(crate) fn replace_nat_index(value: &NatExpr, replacement: &NatExpr) -> NatExpr {
     match value {
         NatExpr::Index => replacement.clone(),
         NatExpr::Add { left, right } => nat_add(

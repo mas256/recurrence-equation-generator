@@ -40,7 +40,7 @@ cd "$lean_dir"
 lake env lean --version | tee .prepared.version
 grep -F 'version 4.19.0,' .prepared.version >/dev/null
 if [[ "${RECURRENCE_BUILD_FROM_SOURCE:-0}" != 1 ]]; then
-  if ! lake exe cache get Mathlib/Data/Rat/Cast/Order.lean Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean Mathlib/Data/Nat/Factorial/Basic.lean Mathlib/Data/Nat/Choose/Basic.lean Mathlib/Tactic/FieldSimp.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/Ring.lean Mathlib/Tactic/Positivity.lean Mathlib/Tactic/NormNum.lean; then
+  if ! lake exe cache get Mathlib.Data.Rat.Cast.Order Mathlib.Algebra.BigOperators.Group.Finset.Basic Mathlib.Data.Nat.Factorial.Basic Mathlib.Data.Nat.Choose.Basic Mathlib.Tactic.FieldSimp Mathlib.Tactic.Linarith Mathlib.Tactic.Ring Mathlib.Tactic.Positivity Mathlib.Tactic.NormNum; then
     echo "キャッシュを取得できないため、必要なモジュールをソースから構築します。"
   fi
 fi

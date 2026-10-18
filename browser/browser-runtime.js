@@ -2,7 +2,9 @@
 (() => {
   const TIMEOUT_MS = 10000;
   const HISTORY_LIMIT = 40;
-  const HISTORY_KEY = "recurrence-lab:browser:recent:v1";
+  const SELECTION_HISTORY_LIMIT = 2000;
+  const LEGACY_HISTORY_KEY = "recurrence-lab:browser:recent:v1";
+  const HISTORY_KEY = "recurrence-lab:browser:recent:v2";
   const terminal = new Set(["succeeded", "failed", "timeout", "cancelled"]);
   const jobs = new Map();
   const problems = new Map();
@@ -13,10 +15,15 @@
   let historyStorage = "memory";
 
   try {
-    const saved = JSON.parse(window.localStorage.getItem(HISTORY_KEY) || "[]");
+    const source = window.localStorage.getItem(HISTORY_KEY) ?? window.localStorage.getItem(LEGACY_HISTORY_KEY) ?? "[]";
+    const saved = JSON.parse(source);
     if (Array.isArray(saved)) {
-      recent = [...new Set(saved.filter((id) => typeof id === "string" && /^[a-f0-9]{64}$/.test(id)))].slice(-HISTORY_LIMIT);
+      recent = saved.map((entry) => typeof entry === "string" ? { id: entry, family: "", variant: "" } : entry)
+        .filter((entry) => entry && typeof entry.id === "string" && /^[a-f0-9]{64}$/.test(entry.id))
+        .map((entry) => ({ id: entry.id, family: typeof entry.family === "string" ? entry.family : "", variant: typeof entry.variant === "string" ? entry.variant : "" }))
+        .slice(-SELECTION_HISTORY_LIMIT);
     }
+    window.localStorage.setItem(HISTORY_KEY, JSON.stringify(recent));
     historyStorage = "local";
   } catch (_) { /* Some browsers disable storage for file URLs. */ }
 
@@ -124,7 +131,11 @@
     return catalogPromise;
   }
   function remember(problem) {
-    recent = [...recent.filter((value) => value !== problem.id), problem.id].slice(-HISTORY_LIMIT);
+    recent = [...recent, {
+      id: problem.id,
+      family: problem.recipe?.family || "",
+      variant: problem.variant?.id || "",
+    }].slice(-SELECTION_HISTORY_LIMIT);
     try {
       window.localStorage.setItem(HISTORY_KEY, JSON.stringify(recent));
       historyStorage = "local";
@@ -175,7 +186,7 @@
     if (activeJob) throw new Error("生成が進行中です。終了するか中止してから次の問題をつくってください。");
     if (operation === "generate") {
       if (!Number.isInteger(payload.level) || payload.level < 1 || payload.level > 5) throw new Error("難易度はLv1〜Lv5を指定してください。");
-      payload = { ...payload, seed: payload.seed ?? seed(), recent_ids: [...recent] };
+      payload = { ...payload, seed: payload.seed ?? seed(), recent_ids: recent.slice(-HISTORY_LIMIT).map((entry) => entry.id), selection_history: clone(recent) };
     }
     const job = {
       id: id(), status: "generating", phase: "generating", message: "条件に合う問題を作成しています。",
@@ -193,7 +204,7 @@
   function body(options) {
     let result;
     if (typeof options.body === "string") {
-      if (options.body.length > 256 * 1024) throw new Error("入力ファイルは256KB以下にしてください。");
+      if (options.body.length > 512 * 1024) throw new Error("入力ファイルは512KB以下にしてください。");
       try { result = JSON.parse(options.body); }
       catch (_) { throw new Error("JSONの形式が正しくありません。Recipeファイルを確認してください。"); }
     } else result = clone(options.body || {});
@@ -210,7 +221,8 @@
       ready: !message && result?.ready !== false,
       deployment_mode: "browser", application_version: result?.application_version || "0.3.0",
       engine: "Rust / WebAssembly", families: result?.families || [],
-      active_job: activeJob, history_count: recent.length, history_storage: historyStorage,
+      methods: result?.methods || [], coverage: result?.coverage || [], variants: result?.variants || [],
+      active_job: activeJob, history_count: Math.min(HISTORY_LIMIT, recent.length), selection_history_count: recent.length, history_storage: historyStorage,
       checked_terms: result?.checked_terms || 20,
       limits: {
         candidate_limit: 200, search_timeout_seconds: 10, request_timeout_seconds: 10,

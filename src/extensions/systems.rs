@@ -836,7 +836,7 @@ pub fn explain(
         Some(problem.secondary_general_terms[0].clone()),
         "分離した2モードを代入",
     ));
-    steps.push(step("これらの一般項は両方の初期条件と両方の漸化式をすべての添字で満たす。初期条件から2数列の次の項が順に定まるため、解は一意である。",None,"Leanで連立全体の初期条件・漸化式・一意性を検証"));
+    steps.push(step("これらの一般項は両方の初期条件と両方の漸化式をすべての添字で満たす。初期条件から2数列の次の項が順に定まるため、解は一意である。",None,"連立全体の初期条件・漸化式と一意性"));
     Ok(Some(DerivationIR {
         method_name: classification.method_name.clone(),
         hint: format!(

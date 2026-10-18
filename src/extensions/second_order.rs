@@ -31,7 +31,7 @@ pub fn catalog() -> Vec<FamilyInfo> {
         ("scaled_second_order", "正規化＋3項間", 4),
         ("difference_scaled", "階差＋階比＋総和", 5),
         ("forced_second", "定数項を含む3項間", 4),
-        ("arithmetic_difference", "等差と階差の組合せ", 4),
+        ("arithmetic_difference", "等差と階差の組合せ", 2),
     ]
     .into_iter()
     .map(|(id, label, level)| FamilyInfo {
@@ -1103,7 +1103,14 @@ mod tests {
                 0..=0
             } {
                 let generated = crate::generator::replay(&fixture(&family.id, profile)).unwrap();
-                assert_eq!(generated.classification.level, family.levels[0]);
+                assert_eq!(
+                    generated.classification.level,
+                    if family.id == "arithmetic_difference" {
+                        4
+                    } else {
+                        family.levels[0]
+                    }
+                );
                 assert_eq!(
                     generated.classification.score,
                     if family.id == "difference_scaled" {

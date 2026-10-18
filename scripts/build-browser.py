@@ -80,7 +80,7 @@ standalone = re.sub(r'<script defer src="([^"]+)"></script>', inline_script, sta
 license_text = (output / "vendor/KATEX-LICENSE").read_text()
 standalone = standalone.replace("</body>", "<!-- Bundled KaTeX license:\n" + license_text + "-->\n" + "\n".join(scripts) + "\n</body>")
 (output / "漸化式ラボ.html").write_text(standalone)
-usage = "漸化式ラボ.html をブラウザーで開いてください。サーバー・インストール・通信は不要です。\n問題はRust/WebAssemblyで生成し、初期条件と1〜20の漸化式を厳密計算で検査します。\nブラウザーではLeanによる全項証明を実行しません。\nソース: https://github.com/mas256/recurrence-equation-generator\n"
+usage = "漸化式ラボ.html をブラウザーで開いてください。サーバー・インストール・通信は不要です。\n問題はRust/WebAssemblyで生成します。通常型は初期条件と1〜20の漸化式を厳密計算で検査します。指数が急増する対数型は小さい項の厳密計算と指数・剰余の検査を併用します。\nブラウザーではLeanによる全項証明を実行しません。\nソース: https://github.com/mas256/recurrence-equation-generator\n"
 (output / "使い方.txt").write_text(usage)
 dist = root / "dist"
 dist.mkdir(exist_ok=True)

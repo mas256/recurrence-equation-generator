@@ -2,6 +2,8 @@ use crate::generator::{Classification, DerivationIR, FamilyInfo, ProblemIR, Reci
 use crate::math::Rational;
 use rand_chacha::ChaCha8Rng;
 use std::collections::BTreeMap;
+pub mod elementary;
+pub mod exponential;
 pub mod first_order;
 pub mod powers;
 pub mod second_order;
@@ -10,7 +12,9 @@ pub mod systems;
 
 macro_rules! route {
     ($family:expr, $call:ident $(, $arg:expr)*) => {
-        if first_order::supports($family) { first_order::$call($family $(, $arg)*) }
+        if elementary::supports($family) { elementary::$call($family $(, $arg)*) }
+        else if exponential::supports($family) { exponential::$call($family $(, $arg)*) }
+        else if first_order::supports($family) { first_order::$call($family $(, $arg)*) }
         else if second_order::supports($family) { second_order::$call($family $(, $arg)*) }
         else if sums::supports($family) { sums::$call($family $(, $arg)*) }
         else if powers::supports($family) { powers::$call($family $(, $arg)*) }
@@ -25,11 +29,15 @@ pub fn catalog() -> Vec<FamilyInfo> {
         sums::catalog(),
         powers::catalog(),
         systems::catalog(),
+        elementary::catalog(),
+        exponential::catalog(),
     ]
     .concat()
 }
 pub fn supports(family: &str) -> bool {
     first_order::supports(family)
+        || elementary::supports(family)
+        || exponential::supports(family)
         || second_order::supports(family)
         || sums::supports(family)
         || powers::supports(family)
@@ -54,7 +62,11 @@ pub fn build_recipe(
 }
 pub fn compile(recipe: &Recipe) -> Result<ProblemIR, String> {
     let family = recipe.family.as_str();
-    if first_order::supports(family) {
+    if elementary::supports(family) {
+        elementary::compile(recipe)
+    } else if exponential::supports(family) {
+        exponential::compile(recipe)
+    } else if first_order::supports(family) {
         first_order::compile(recipe)
     } else if second_order::supports(family) {
         second_order::compile(recipe)
@@ -87,6 +99,8 @@ pub fn explain(
     classification: &Classification,
 ) -> Result<Option<DerivationIR>, String> {
     for explain in [
+        elementary::explain,
+        exponential::explain,
         systems::explain,
         sums::explain,
         powers::explain,
