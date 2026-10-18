@@ -203,7 +203,7 @@ pub fn generate(
     let seen: BTreeSet<_> = history.iter().rev().take(2000).map(|h| &h.id).collect();
     let mut older_repeat = None;
     let mut last_error = String::new();
-    let budget = max_candidates.max(1).min(2000);
+    let budget = max_candidates.clamp(1, 2000);
     // Keep a selected branch fixed during coefficient search. If it is exhausted,
     // progress to another underrepresented branch rather than looping forever.
     let mut attempts = 0;
