@@ -109,6 +109,8 @@ bash scripts/benchmark.sh http://127.0.0.1:3210 10 test-results/benchmark
 
 ## 構成と参照元
 
+公開中の数学書の本棚から GitHub Actions に問題バンクの再生成を依頼する API は、[api/regeneration](api/regeneration/README.md) で管理します。Cloudflare Workers の初回設定が必要です。
+
 `src/math.rs`が厳密数式、`src/generator.rs`と`src/extensions/`がRecipeと生成・解法検出・採点、`src/export.rs`がTeXです。`src/browser.rs`はWebAssemblyへの入口と有限項の厳密検査、`web/browser-runtime.js`はブラウザー内の処理管理、`scripts/build-browser.py`はオフライン版の構築を担当します。`src/verifier.rs`と`src/proofs/`はLean接続と証明生成、`src/main.rs`は任意のネイティブ版のローカルAPIです。
 
 参照した数学規則とLean共通定理は[mas256/math-textbooks](https://github.com/mas256/math-textbooks/tree/a21c3d0711ebb08d0516e646f32ee3cab7b2c7de/recurrence)のコミット`a21c3d0711ebb08d0516e646f32ee3cab7b2c7de`です。KaTeXのライセンスは`web/vendor/KATEX-LICENSE`とブラウザー配布物に同梱しています。実装範囲と残る設計事項は[実装状況](docs/implementation-status.md)に記載しています。
