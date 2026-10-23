@@ -6,11 +6,9 @@ use crate::generator::{
 use crate::math::{Equation, Expr, NatExpr, Rational};
 use num_bigint::BigInt;
 use num_traits::Signed;
-#[cfg(any(feature = "browser", test))]
 use num_traits::{ToPrimitive, Zero};
 use rand::Rng;
 use rand_chacha::ChaCha8Rng;
-#[cfg(any(feature = "browser", test))]
 use serde_json::{json, Value};
 use std::collections::{BTreeMap, BTreeSet};
 type Params = BTreeMap<String, Rational>;
@@ -1042,7 +1040,6 @@ pub fn alternative_derivations(p: &ProblemIR) -> Result<Vec<DerivationIR>, Strin
     }
 }
 // Evaluate exponents in BigInt, never materializing double-exponential terms.
-#[cfg(any(feature = "browser", test))]
 fn nat_big(expr: &NatExpr, n: u32) -> Result<BigInt, String> {
     Ok(match expr {
         NatExpr::Index => n.into(),
@@ -1078,7 +1075,6 @@ fn nat_big(expr: &NatExpr, n: u32) -> Result<BigInt, String> {
         _ => return Err("専用指数検査で扱わない自然数式です。".into()),
     })
 }
-#[cfg(any(feature = "browser", test))]
 fn mod_pow(mut b: u64, mut e: u64, m: u64) -> u64 {
     let mut v = 1;
     while e > 0 {
@@ -1090,7 +1086,6 @@ fn mod_pow(mut b: u64, mut e: u64, m: u64) -> u64 {
     }
     v
 }
-#[cfg(any(feature = "browser", test))]
 fn rational_mod(v: &Rational, p: u64) -> Result<u64, String> {
     fn residue(n: &BigInt, p: u64) -> u64 {
         ((n % BigInt::from(p) + BigInt::from(p)) % BigInt::from(p))
@@ -1104,13 +1099,11 @@ fn rational_mod(v: &Rational, p: u64) -> Result<u64, String> {
     }
     Ok(numerator * mod_pow(denominator, p - 2, p) % p)
 }
-#[cfg(any(feature = "browser", test))]
 fn exponent_mod(e: &BigInt, p: u64) -> u64 {
     (e % BigInt::from(p - 1)).to_u64().unwrap()
 }
 /// Exact recurrence checks for n=1..5; exponent identities and independent
 /// recurrence iteration modulo three primes through n=20. Not a universal proof.
-#[cfg(any(feature = "browser", test))]
 pub fn finite_checks(problem: &ProblemIR) -> Result<Option<Value>, String> {
     let Some(Route::Logarithmic {
         base,
