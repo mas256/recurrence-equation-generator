@@ -5,15 +5,13 @@
 use crate::{
     export,
     generator::{self, GeneratedProblem, Recipe},
-    math::{Expr, NatExpr, Rational},
 };
 use serde::Deserialize;
 use serde_json::{json, Value};
-use std::collections::BTreeMap;
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::*;
 
-const CHECKED_TERMS: u32 = 20;
+use crate::finite_check::CHECKED_TERMS;
 const CANDIDATE_LIMIT: usize = 200;
 const MAX_JSON_BYTES: usize = 512 * 1024;
 const MAX_SAFE_JS_INTEGER: u64 = 9_007_199_254_740_991;
@@ -88,83 +86,11 @@ fn encode(problem: &GeneratedProblem, check: Value) -> Result<String, String> {
     serde_json::to_string(&value).map_err(|e| e.to_string())
 }
 fn exact_checks(problem: &GeneratedProblem) -> Result<Value, String> {
-    let replayed = generator::replay(&problem.recipe)?;
-    if serde_json::to_value(&replayed).map_err(|e| e.to_string())?
-        != serde_json::to_value(problem).map_err(|e| e.to_string())?
-    {
-        return Err("Recipeと表示する問題・解法の内容が一致しません。".into());
-    }
-    if let Some(mut check) = crate::extensions::exponential::finite_checks(&problem.problem)? {
-        check["status"] = json!("browser_checked");
-        check["engine"] = json!("rust_wasm");
-        check["checked_terms"] = json!(20);
-        check["problem_hash"] = json!(problem.id);
-        check["recipe_replayed"] = json!(true);
-        check["formal_verification"] = json!(false);
-        check["lean_executed"] = json!(false);
-        return Ok(check);
-    }
-    let mut formulas = BTreeMap::new();
-    for equation in std::iter::once(&problem.problem.general_term)
-        .chain(&problem.problem.secondary_general_terms)
-    {
-        match &equation.lhs {
-            Expr::Term {
-                sequence,
-                index: NatExpr::Index,
-            } if !formulas.contains_key(sequence.as_str()) => {
-                formulas.insert(sequence.as_str(), &equation.rhs);
-            }
-            _ => return Err("一般項の数列名または添字が登録規則と一致しません。".into()),
-        }
-    }
-    // Recurrences can refer to n+1 and n+2, and sums can include those indices.
-    let mut terms = BTreeMap::new();
-    let closed = |_: &str, _: u32| Err("一般項には未解決の数列が残っています。".into());
-    for (&sequence, formula) in &formulas {
-        for n in 1..=CHECKED_TERMS + 2 {
-            terms.insert((sequence, n), formula.evaluate(n, &closed)?);
-        }
-    }
-    let term = |sequence: &str, n: u32| -> Result<Rational, String> {
-        terms
-            .get(&(sequence, n))
-            .cloned()
-            .ok_or_else(|| "登録範囲外の数列または添字です。".into())
-    };
-    for initial in &problem.problem.initials {
-        if initial.lhs.evaluate(1, &term)? != initial.rhs.evaluate(1, &term)? {
-            return Err("初期条件と一般項が一致しません。".into());
-        }
-    }
-    let recurrences: Vec<_> = std::iter::once(&problem.problem.recurrence)
-        .chain(&problem.problem.secondary_recurrences)
-        .collect();
-    for n in problem.problem.recurrence_start..=CHECKED_TERMS {
-        for equation in &recurrences {
-            if equation.lhs.evaluate(n, &term)? != equation.rhs.evaluate(n, &term)? {
-                return Err(format!("n={n}の漸化式と一般項が一致しません。"));
-            }
-        }
-        for condition in &problem.problem.conditions {
-            let value = condition.expression.evaluate(n, &term)?;
-            let satisfied = match condition.kind.as_str() {
-                "nonzero" => !value.is_zero(),
-                "positive" => value.is_positive(),
-                _ => return Err("未登録の定義域条件です。".into()),
-            };
-            if !satisfied {
-                return Err(format!("n={n}の定義域条件を満たしていません。"));
-            }
-        }
-    }
-    Ok(json!({
-        "status":"browser_checked", "engine":"rust_wasm", "checked_terms":CHECKED_TERMS,
-        "first_index":problem.problem.recurrence_start, "last_index":CHECKED_TERMS,
-        "initials_checked":problem.problem.initials.len(), "recurrences_checked":recurrences.len(),
-        "conditions_checked":problem.problem.conditions.len(), "recipe_replayed":true,
-        "formal_verification":false, "lean_executed":false, "problem_hash":problem.id,
-    }))
+    let mut check = crate::finite_check::exact_checks(problem)?;
+    check["status"] = json!("browser_checked");
+    check["engine"] = json!("rust_wasm");
+    check["lean_executed"] = json!(false);
+    Ok(check)
 }
 
 /// Catalog JSON is independent of the native Lean environment.
@@ -255,6 +181,7 @@ pub fn browser_tex(problem_json: &str, show_solution: bool) -> Result<String, St
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::math::{Expr, Rational};
     #[test]
     fn every_family_is_checked_replayable_and_exportable() {
         assert!(generator::family_catalog().len() > 28);

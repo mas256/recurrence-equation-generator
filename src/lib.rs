@@ -1,8 +1,11 @@
+#[cfg(all(feature = "native", not(target_arch = "wasm32")))]
+pub mod bank;
 #[cfg(feature = "browser")]
 pub mod browser;
 pub mod coverage;
 pub mod export;
 pub(crate) mod extensions;
+pub mod finite_check;
 pub mod generator;
 pub mod learning;
 pub mod math;

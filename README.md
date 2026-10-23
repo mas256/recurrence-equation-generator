@@ -75,6 +75,20 @@ bash scripts/start.sh --port 3211 --lean-timeout 90 --request-timeout 180
 
 同時検証は1件で、接続は127.0.0.1を使用します。初期値は候補数200、探索10秒、Lean60秒、要求全体120秒、検証候補2件です。`--candidate-limit`、`--search-timeout`、`--lean-timeout`、`--request-timeout`、`--lean-candidates`で変更できます。保存済みの規則版1.0の重み付き総和Recipeは、再現互換のため数値コスト8を超えてもネイティブ版で再現できます。
 
+### 静的ページ向けの問題バンク
+
+`recurrence-bank` は、Lv1〜5の問題をまとめて作り、静的なWebページで出題できるJSONに書き出します。[数学書の本棚](https://mas256.github.io/math-textbooks/recurrence/)の問題更新で使用します。
+
+```bash
+cargo build --release --locked --bin recurrence-bank
+target/release/recurrence-bank generate --seed 12345 --per-level 30 --out bank
+target/release/recurrence-bank check --bank bank
+```
+
+`generate` は、乱数の種から、通常演習と同じ出題配分で各Lvの問題を選びます。同じ問題は含めません。各問題について、Recipeの再生成と、n=20までの有限項の厳密計算を行います。そのうえで、ネイティブ版と同じ4定理をLeanで検証し、公理を監査します（`--jobs` 件を並列に実行）。Leanで失敗した候補は除外して補充し、`--max-lean-failures`（既定5）を超えたら失敗とします。出力は `problems.json` と `manifest.json` です。`manifest.json` には、種、件数、除外した候補、`problems.json` のSHA-256を記録します。
+
+`check` はLeanを実行しません。各RecipeからLeanの証明ソースまで再生成し、記録された問題・解法・証明ソースと完全に一致することを確かめます。あわせて有限項の検査をやり直します。エンジンの版が異なるバンクは拒否します。
+
 ## 開発と確認
 
 ブラウザー版のビルド:
