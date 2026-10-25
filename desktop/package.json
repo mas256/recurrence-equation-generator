@@ -1,0 +1,11 @@
+{
+  "name": "recurrence-lab-desktop",
+  "private": true,
+  "scripts": {
+    "prepare-frontend": "node scripts/prepare-frontend.mjs",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.3"
+  }
+}

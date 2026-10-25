@@ -12,6 +12,19 @@ v0.4.0は42系統・123細分類です。例外係数・退化・重根を含む
 
 **[browser/漸化式ラボ.html](browser/漸化式ラボ.html)** を直接開いても使用できます。このHTMLは生成エンジン、数式表示、フォントをすべて含むため、1ファイルだけを別のPCに渡せます。GitHub上のコード表示画面では実行されません。HTMLをダウンロードして開いてください。
 
+### Windowsアプリ版
+
+[Releases](https://github.com/mas256/recurrence-equation-generator/releases)の `漸化式ラボ_…_x64-setup.exe` をダウンロードして実行すると、スタートメニューに「漸化式ラボ」が追加されます。管理者権限は不要です。
+
+- 中身はブラウザー版と同じ生成エンジンで、問題の生成と確認はPC内で行います。通信は不要です。
+- 確認は、有理数による有限項の厳密計算です。Leanは実行しません。
+- TeXとRecipeは、ブラウザーと同じく「ダウンロード」フォルダーに保存します。
+- アプリは[Tauri](https://tauri.app/)で作成しています。表示にはWindows標準のWebView2を使います。WebView2はWindows 10・11に標準で入っており、ない場合はインストーラーが導入します。
+
+ソースは[desktop](desktop)にあります。`npm ci` の後に `npx tauri build` でビルドします。`browser/漸化式ラボ.html` を画面として取り込み、表示文言をアプリ向けに置き換えます。`desktop-vX.Y.Z` のタグをpushすると、GitHub ActionsがWindowsでビルドしてReleasesに公開します。
+
+### 複数ファイル版
+
 複数ファイルに分けた版は[browser/index.html](browser/index.html)です。この版を使う場合は`browser`フォルダー全体を保持してください。動作環境、保存と再現、開発用のビルド手順は[ブラウザー版の説明](docs/browser.md)に記載しています。
 
 ## 使い方
