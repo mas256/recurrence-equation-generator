@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "漸化式ラボ",
+  "mainBinaryName": "recurrence-lab",
+  "version": "0.4.0",
+  "identifier": "io.github.mas256.recurrence-lab",
+  "build": {
+    "beforeBuildCommand": "npm run prepare-frontend",
+    "beforeDevCommand": "npm run prepare-frontend",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/icon.ico"
+    ],
+    "publisher": "mas256",
+    "copyright": "mas256",
+    "shortDescription": "漸化式の問題を生成する演習アプリ",
+    "windows": {
+      "nsis": {
+        "languages": [
+          "Japanese"
+        ],
+        "installMode": "currentUser"
+      }
+    }
+  }
+}
