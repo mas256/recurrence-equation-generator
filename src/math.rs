@@ -258,18 +258,58 @@ impl NatExpr {
             }
         })
     }
+    /// 0: atom, 1: product, 2: power, 3: sum or difference.
+    fn precedence(&self) -> u8 {
+        if let Some(simplified) = self.unit_product() {
+            return simplified.map_or(0, Self::precedence);
+        }
+        match self {
+            Self::Add { .. } | Self::Sub { .. } => 3,
+            Self::Mul { .. } => 1,
+            Self::Pow { .. } | Self::GeometricPower { .. } => 2,
+            _ => 0,
+        }
+    }
+    /// Parenthesize only when the expression binds more loosely than `limit`.
+    fn wrapped(&self, limit: u8) -> String {
+        if self.precedence() > limit {
+            format!("\\left({}\\right)", self.latex())
+        } else {
+            self.latex()
+        }
+    }
+    /// A product with a factor 1 is shown as the other factor, and a product
+    /// of two constants as its value (`None`), e.g. 2^{2} rather than 2^{2\\cdot 1}.
+    fn unit_product(&self) -> Option<Option<&Self>> {
+        let Self::Mul { left, right } = self else {
+            return None;
+        };
+        match (&**left, &**right) {
+            (Self::Constant { .. }, Self::Constant { .. }) => Some(None),
+            (Self::Constant { value: 1 }, other) | (other, Self::Constant { value: 1 }) => {
+                Some(Some(other))
+            }
+            _ => None,
+        }
+    }
+    /// Index expressions that can carry `!` or `^` without parentheses.
+    pub fn is_atom(&self) -> bool {
+        self.precedence() == 0
+    }
     pub fn latex(&self) -> String {
         match self {
             Self::Index => "n".into(),
             Self::Constant { value } => value.to_string(),
             Self::Bound { name } => name.clone(),
             Self::Add { left, right } => format!("{}+{}", left.latex(), right.latex()),
-            Self::Sub { left, right } => format!("{}-{}", left.latex(), right.latex()),
-            Self::Mul { left, right } => format!(
-                "\\left({}\\right)\\left({}\\right)",
-                left.latex(),
-                right.latex()
-            ),
+            Self::Sub { left, right } => format!("{}-{}", left.latex(), right.wrapped(1)),
+            Self::Mul { left, right } => match (self.unit_product(), &**left, &**right) {
+                (Some(Some(other)), ..) => other.latex(),
+                (Some(None), Self::Constant { value: a }, Self::Constant { value: b }) => {
+                    (u64::from(*a) * u64::from(*b)).to_string()
+                }
+                _ => juxtapose(&left.wrapped(2), &right.wrapped(2)),
+            },
             Self::Div {
                 numerator,
                 denominator,
@@ -278,9 +318,7 @@ impl NatExpr {
                 numerator.latex(),
                 denominator.latex()
             ),
-            Self::Pow { base, exponent } => {
-                format!("\\left({}\\right)^{{{exponent}}}", base.latex())
-            }
+            Self::Pow { base, exponent } => format!("{}^{{{exponent}}}", base.wrapped(0)),
             Self::GeometricPower { base, exponent } => {
                 format!("{base}^{{{}}}", exponent.latex())
             }
@@ -523,55 +561,94 @@ impl Expr {
                 }
                 s
             }
-            Self::Mul { factors } => factors
-                .iter()
-                .map(|x| {
-                    let s = x.latex();
-                    if matches!(
-                        x,
-                        Self::Add { .. }
-                            | Self::NatCast {
-                                value: NatExpr::Add { .. } | NatExpr::Sub { .. }
+            Self::Mul { factors } => {
+                // A negative leading coefficient becomes the sign of the product:
+                // -3\,a_{n} rather than \left(-3\right)\,a_{n}.
+                let mut sign = "";
+                let mut rest: Vec<String> = vec![];
+                for (i, x) in factors.iter().enumerate() {
+                    if i == 0 && factors.len() > 1 {
+                        if let Self::Rational { value } = x {
+                            let magnitude = if !value.is_positive() && !value.is_zero() {
+                                sign = "-";
+                                Rational::integer(0).sub(value)
+                            } else {
+                                value.clone()
+                            };
+                            if magnitude != Rational::integer(1) {
+                                rest.push(magnitude.latex());
                             }
-                    ) || s.starts_with('-')
-                    {
-                        format!("\\left({s}\\right)")
-                    } else {
-                        s
+                            continue;
+                        }
                     }
-                })
-                .collect::<Vec<_>>()
-                .join("\\,"),
+                    let s = x.latex();
+                    rest.push(
+                        if matches!(x, Self::Add { .. })
+                            || matches!(x, Self::NatCast { value } if value.precedence() == 3)
+                            || s.starts_with('-')
+                        {
+                            format!("\\left({s}\\right)")
+                        } else {
+                            s
+                        },
+                    );
+                }
+                let mut product = String::from(sign);
+                for (i, factor) in rest.iter().enumerate() {
+                    if i > 0 {
+                        product.push_str(if factor.starts_with(|c: char| c.is_ascii_digit()) {
+                            "\\cdot "
+                        } else {
+                            "\\,"
+                        });
+                    }
+                    product.push_str(factor);
+                }
+                product
+            }
             Self::Div {
                 numerator,
                 denominator,
             } => format!("\\frac{{{}}}{{{}}}", numerator.latex(), denominator.latex()),
             Self::Pow { base, exponent } => {
                 let s = base.latex();
-                let b = if matches!(**base,Self::Rational{ref value} if value.0.denom().is_one()&&value.is_positive())
-                {
+                let simple = match &**base {
+                    Self::Rational { value } => value.0.denom().is_one() && !value.0.is_negative(),
+                    Self::Term { .. } => true,
+                    Self::NatCast { value } => value.is_atom(),
+                    _ => false,
+                };
+                let b = if simple {
                     s
                 } else {
                     format!("\\left({s}\\right)")
                 };
+                // x^{1} is shown as x; the parentheses keep the base's scope.
+                if matches!(exponent, NatExpr::Constant { value: 1 }) {
+                    return b;
+                }
                 format!("{b}^{{{}}}", exponent.latex())
             }
-            Self::Factorial { index } => format!("\\left({}\\right)!", index.latex()),
-            Self::Log { base, argument } => format!(
-                "\\log_{{{}}}\\left({}\\right)",
-                base.latex(),
-                argument.latex()
-            ),
+            Self::Factorial { index } => format!("{}!", index.wrapped(0)),
+            Self::Log { base, argument } => match &**argument {
+                Self::Term { .. } => format!("\\log_{{{}}}{}", base.latex(), argument.latex()),
+                _ => format!(
+                    "\\log_{{{}}}\\left({}\\right)",
+                    base.latex(),
+                    argument.latex()
+                ),
+            },
             Self::Sum {
                 variable,
                 lower,
                 upper,
                 body,
             } => {
-                let summand = if matches!(**body, Self::Add { .. }) {
-                    format!("\\left({}\\right)", body.latex())
+                let summand = body.latex();
+                let summand = if matches!(**body, Self::Add { .. }) || summand.starts_with('-') {
+                    format!("\\left({summand}\\right)")
                 } else {
-                    body.latex()
+                    summand
                 };
                 format!(
                     "\\sum_{{{variable}={}}}^{{{}}}{summand}",
@@ -744,6 +821,16 @@ impl Equation {
     }
 }
 
+/// Write a product by juxtaposition, separating adjacent numerals so that
+/// 3 and 4^{n} are not read as 34^{n}.
+fn juxtapose(left: &str, right: &str) -> String {
+    if right.starts_with(|c: char| c.is_ascii_digit()) {
+        format!("{left}\\cdot {right}")
+    } else {
+        format!("{left}{right}")
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -789,5 +876,91 @@ mod tests {
             body: Box::new(Expr::add(vec![Expr::index(), Expr::integer(1)])),
         };
         assert!(expr.latex().ends_with("\\left(n+1\\right)"));
+    }
+    #[test]
+    fn latex_omits_only_redundant_parentheses() {
+        let a = |offset| Expr::term("a", offset);
+        let sum = Expr::Sum {
+            variable: "k".into(),
+            lower: NatExpr::constant(1),
+            upper: NatExpr::n(),
+            body: Box::new(Expr::div(Expr::term("a", 0), Expr::index())),
+        };
+        // A negative coefficient becomes the sign of its term.
+        let weighted = Expr::add(vec![
+            Expr::mul(vec![Expr::integer(8), a(0)]),
+            Expr::mul(vec![Expr::integer(-3), sum]),
+        ]);
+        assert!(weighted
+            .latex()
+            .starts_with("8\\,a_{n}-3\\,\\sum_{k=1}^{n}"));
+        assert_eq!(Expr::sub(a(1), a(0)).latex(), "a_{n+1}-a_{n}");
+        // Products of index expressions and powers of a term need no parentheses.
+        let doubled = NatExpr::mul(NatExpr::constant(2), NatExpr::n());
+        assert_eq!(
+            Expr::pow(Expr::integer(2), doubled.clone()).latex(),
+            "2^{2n}"
+        );
+        assert_eq!(Expr::pow(a(1), NatExpr::constant(2)).latex(), "a_{n+1}^{2}");
+        assert_eq!(
+            NatExpr::mul(NatExpr::constant(2), NatExpr::constant(1)).latex(),
+            "2"
+        );
+        assert_eq!(
+            NatExpr::mul(NatExpr::constant(1), NatExpr::n()).latex(),
+            "n"
+        );
+        // Adjacent numerals are separated so 3 and 4^{n} do not read as 34^{n}.
+        let geometric = Expr::pow(Expr::integer(4), NatExpr::n());
+        assert_eq!(
+            Expr::mul(vec![Expr::integer(3), geometric]).latex(),
+            "3\\cdot 4^{n}"
+        );
+        // Parentheses that carry meaning stay.
+        let shifted = NatExpr::Sub {
+            left: Box::new(NatExpr::n()),
+            right: Box::new(NatExpr::constant(1)),
+        };
+        assert_eq!(
+            Expr::pow(Expr::integer(-2), shifted.clone()).latex(),
+            "\\left(-2\\right)^{n-1}"
+        );
+        assert_eq!(
+            Expr::pow(Expr::rational(Rational::fraction(1, 2)), NatExpr::n()).latex(),
+            "\\left(\\frac{1}{2}\\right)^{n}"
+        );
+        assert_eq!(
+            NatExpr::mul(NatExpr::constant(2), shifted.clone()).latex(),
+            "2\\left(n-1\\right)"
+        );
+        let difference = NatExpr::Sub {
+            left: Box::new(NatExpr::n()),
+            right: Box::new(NatExpr::add(NatExpr::constant(1), doubled)),
+        };
+        assert_eq!(difference.latex(), "n-\\left(1+2n\\right)");
+        let squared = NatExpr::Pow {
+            base: Box::new(NatExpr::Pow {
+                base: Box::new(NatExpr::n()),
+                exponent: 2,
+            }),
+            exponent: 3,
+        };
+        assert_eq!(squared.latex(), "\\left(n^{2}\\right)^{3}");
+        assert_eq!(
+            Expr::Factorial { index: shifted }.latex(),
+            "\\left(n-1\\right)!"
+        );
+        assert_eq!(
+            Expr::Factorial {
+                index: NatExpr::n()
+            }
+            .latex(),
+            "n!"
+        );
+        let shifted_term = Expr::add(vec![a(0), Expr::integer(1)]);
+        assert_eq!(
+            Expr::pow(shifted_term, NatExpr::constant(1)).latex(),
+            "\\left(a_{n}+1\\right)"
+        );
     }
 }
